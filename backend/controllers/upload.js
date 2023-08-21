@@ -12,7 +12,8 @@ exports.uploadImages = async (req, res) => {
     let files = Object.values(req.files).flat();
     let images = [];
     for (const file of files) {
-      const url = await uploadToCloudinary(file, path);
+      //const url = await uploadToCloudinary(file, path);
+      const url = "https://s2-autoesporte.glbimg.com/mYgwlPa7vtIiUk6kROUxJUi2yyo=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/a/4/Ik8J1fQYirf6wYRvRJ8Q/2020-03-20-novo-tracker-1.jpg"
       images.push(url);
       removeTmp(file.tempFilePath);
     }
@@ -21,9 +22,12 @@ exports.uploadImages = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 exports.listImages = async (req, res) => {
   const { path, sort, max } = req.body;
-
+  
+  
+/*
   cloudinary.v2.search
     .expression(`${path}`)
     .sort_by("created_at", `${sort}`)
@@ -34,7 +38,8 @@ exports.listImages = async (req, res) => {
     })
     .catch((err) => {
       console.log(err.error.message);
-    });
+    });*/
+    res.json({resources: ["https://s2-autoesporte.glbimg.com/mYgwlPa7vtIiUk6kROUxJUi2yyo=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/a/4/Ik8J1fQYirf6wYRvRJ8Q/2020-03-20-novo-tracker-1.jpg"]})
 };
 
 const uploadToCloudinary = async (file, path) => {

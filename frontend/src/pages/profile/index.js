@@ -45,7 +45,7 @@ export default function Profile({ getAllPosts }) {
   const path = `${userName}/*`;
   const max = 30;
   const sort = "desc";
-
+  
   const getProfile = async () => {
     try {
       dispatch({
@@ -59,9 +59,13 @@ export default function Profile({ getAllPosts }) {
           },
         }
       );
+      console.log("getProfile", data);
       if (data.ok === false) {
+        console.log("dentro do if" );
         navigate("/profile");
       } else {
+        console.log("dentro do else" );
+        console.log("path",path, sort, max  );
         try {
           const images = await axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/listImages`,
@@ -72,16 +76,20 @@ export default function Profile({ getAllPosts }) {
               },
             }
           );
+          console.log("listImagens", images);
           setPhotos(images.data);
         } catch (error) {
-          console.log(error);
+          console.log("error", error);
         }
+        
+        
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
         });
       }
     } catch (error) {
+      console.log("erro", error);
       dispatch({
         type: "PROFILE_ERROR",
         payload: error.response.data.message,
