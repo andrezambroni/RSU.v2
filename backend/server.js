@@ -19,15 +19,14 @@ app.use(
   })
 );
 
-/*const options = {
+const options = {
   origin: "http://localhost:3000",
   useSuccessStatus: 200,
+}
 
-*/
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// });
 //routes
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
