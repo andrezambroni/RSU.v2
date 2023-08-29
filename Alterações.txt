@@ -9,3 +9,5 @@ Comunidade e categorias dela
 
 Arrumar: 
 Contacts ( Friend list - esta aparecendo o próprio usuário)
+
+Verificar Trello
