@@ -41,7 +41,7 @@ a {
 .blue_btn {
   border: none;
   outline: none;
-  background: var(--blue-color);
+  background: #EA4335;
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;

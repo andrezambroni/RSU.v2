@@ -1,6 +1,10 @@
 /*-------login-----*/
 .login_wrapper {
-  background: var(--bg-secondary);
+  background: rgba(66, 66, 66, 0.253);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login_wrap {
@@ -9,16 +13,19 @@
 }
 .login_1 {
   width: 300px;
+  
   margin: 0 auto;
 }
 .login_1 span {
-  font-size: 20px;
+  font-size: 30px;
 }
 .login_2 {
   text-align: center;
+  
 }
 .login_2_wrap {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -29,7 +36,7 @@
   width: 350px;
   height: fit-content;
   margin: 1rem auto;
-  user-select: none;
+  /* user-select: none; */
   border-radius: 10px;
 }
 .login_2_wrap button {
@@ -39,7 +46,7 @@
   font-weight: 700;
 }
 .forgot_password {
-  color: var(--blue-color);
+  color: #EA4335;
   font-size: 14px;
   cursor: pointer;
 }
@@ -52,7 +59,7 @@
   background: var(--bg-third);
 }
 .open_signup {
-  background: var(--green-color);
+  background: #b83428;
   width: 70% !important;
   font-weight: 600 !important;
   font-size: 17px !important;
@@ -175,7 +182,7 @@
 /*----Footer------*/
 .login_footer {
   height: 22vh;
-  background: var(--bg-primary);
+  background: rgba(204, 203, 203, 0.253);
   padding: 1.5rem;
 }
 .login_footer_wrap {
@@ -279,7 +286,7 @@
     margin-left: -1.7rem;
   }
   .login_1 span {
-    font-size: 28px;
+    font-size: 35px;
   }
   .login_2_wrap {
     width: 400px;
