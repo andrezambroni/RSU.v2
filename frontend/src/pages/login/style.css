@@ -10,14 +10,18 @@
 .login_wrap {
   height: 78vh;
   color: var(--color-primary);
+  flex-direction: column;
+  padding-top: 100px;
 }
 .login_1 {
-  width: 300px;
+  /* width: 300px; */
   
-  margin: 0 auto;
+  
+ 
 }
 .login_1 span {
   font-size: 30px;
+  height: 50px;
 }
 .login_2 {
   text-align: center;

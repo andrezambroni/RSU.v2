@@ -46,7 +46,7 @@ export default function Bio({
           >
             Cancel
           </button>
-          <button
+          {/* <button
             className="blue_btn"
             onClick={() => {
               updateDetails();
@@ -54,7 +54,7 @@ export default function Bio({
             }}
           >
             Save
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

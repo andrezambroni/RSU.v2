@@ -34,7 +34,7 @@ export default function Friends() {
       <div className="friends">
         <div className="friends_left">
           <div className="friends_left_header">
-            <h3>Friends</h3>
+            <h3>Amigos</h3>
             <div className="small_circle">
               <i className="settings_filled_icon"></i>
             </div>
@@ -49,7 +49,7 @@ export default function Friends() {
               <div className="small_circle">
                 <i className="friends_home_icon "></i>
               </div>
-              <span>Home</span>
+              <span>Pricipal</span>
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
@@ -63,12 +63,12 @@ export default function Friends() {
               <div className="small_circle">
                 <i className="friends_requests_icon"></i>
               </div>
-              <span>Friend Requests</span>
+              <span>Pedidos de amizade</span>
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
             </Link>
-            <Link
+            {/* <Link
               to="/friends/sent"
               className={`mmenu_item hover3 ${
                 type === "sent" && "active_friends"
@@ -81,16 +81,16 @@ export default function Friends() {
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
-            </Link>
-            <div className="mmenu_item hover3">
+            </Link> */}
+            {/* <div className="mmenu_item hover3">
               <div className="small_circle">
                 <i className="friends_suggestions_icon"></i>
               </div>
-              <span>Suggestions</span>
+              <span>Sugestões</span>
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
-            </div>
+            </div> */}
             <Link
               to="/friends/all"
               className={`mmenu_item hover3 ${
@@ -100,12 +100,12 @@ export default function Friends() {
               <div className="small_circle">
                 <i className="all_friends_icon"></i>
               </div>
-              <span>All Friends</span>
+              <span>Todos os Amigos</span>
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
             </Link>
-            <div className="mmenu_item hover3">
+            {/* <div className="mmenu_item hover3">
               <div className="small_circle">
                 <i className="birthdays_icon"></i>
               </div>
@@ -113,8 +113,8 @@ export default function Friends() {
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
-            </div>
-            <div className="mmenu_item hover3">
+            </div> */}
+            {/* <div className="mmenu_item hover3">
               <div className="small_circle">
                 <i className="all_friends_icon"></i>
               </div>
@@ -122,17 +122,17 @@ export default function Friends() {
               <div className="rArrow">
                 <i className="right_icon"></i>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="friends_right">
           {(type === undefined || type === "requests") && (
             <div className="friends_right_wrap">
               <div className="friends_left_header">
-                <h3>Friend Requests</h3>
+                <h3>Pedidos de Amizade</h3>
                 {type === undefined && (
                   <Link to="/friends/requests" className="see_link hover3">
-                    See all
+                    Mostrar Todos
                   </Link>
                 )}
               </div>
@@ -151,8 +151,8 @@ export default function Friends() {
           )}
           {(type === undefined || type === "sent") && (
             <div className="friends_right_wrap">
-              <div className="friends_left_header">
-                <h3>Sent Requests</h3>
+              {/* <div className="friends_left_header">
+                <h3>Solicitações Enviadas</h3>
                 {type === undefined && (
                   <Link to="/friends/sent" className="see_link hover3">
                     See all
@@ -169,16 +169,16 @@ export default function Friends() {
                       getData={getData}
                     />
                   ))}
-              </div>
+              </div> */}
             </div>
           )}
           {(type === undefined || type === "all") && (
             <div className="friends_right_wrap">
               <div className="friends_left_header">
-                <h3>Friends</h3>
+                <h3>Amigos</h3>
                 {type === undefined && (
                   <Link to="/friends/all" className="see_link hover3">
-                    See all
+                    Mostrar Todos
                   </Link>
                 )}
               </div>

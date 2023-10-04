@@ -51,7 +51,7 @@ export default function LoginForm({ setVisible }) {
   return (
     <div className="login_wrap">
       <div className="login_1">
-        {/* <img src="../../icons/facebook.svg" alt="" /> */}
+         <img src="../../icons/Logo_US.svg" alt="" /> 
         <span>
           A melhor integração para você!
         </span>

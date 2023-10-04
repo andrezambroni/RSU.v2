@@ -10,14 +10,14 @@
   max-width: 945px;
   margin: 0 auto;
 }
-.profile_cover {
+/* .profile_cover {
   position: relative;
   height: 350px;
   width: 100%;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   background: var(--bg-secondary);
-}
+} */
 .cover {
   width: 100%;
   height: 100%;
@@ -154,8 +154,8 @@
   height: 60px !important;
   width: 65px !important;
   margin: 0 !important;
-  color: var(--blue-color) !important;
-  border-bottom: 3px solid var(--blue-color);
+  color: var(--color-secondary) !important;
+  border-bottom: 3px solid var(--color-secondary);
   border-radius: 0 !important;
 }
 .p10_dots {
@@ -267,7 +267,7 @@
   color: var(--color-secondary);
 }
 .grid2 .active {
-  color: var(--blue-color);
+  color: var(--color-secondary);
 }
 .othername {
   color: var(--color-secondary);
@@ -300,7 +300,7 @@
 .profile_header_link {
   font-weight: normal;
   font-size: 16px;
-  color: var(--blue-color);
+  color: var(--color-secondary);
   cursor: pointer;
   padding: 5px 10px;
 }

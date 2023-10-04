@@ -16,9 +16,9 @@ export default function HelpSupport({ setVisible }) {
         <div className="small_circle">
           <i className="help_center_icon"></i>
         </div>
-        <span>Help Center</span>
+        <span>Central de Ajuda</span>
       </div>
-      <div className="mmenu_item hover3">
+      {/* <div className="mmenu_item hover3">
         <div className="small_circle">
           <i className="email_icon"></i>
         </div>
@@ -29,7 +29,7 @@ export default function HelpSupport({ setVisible }) {
           <i className="info_filled_icon"></i>
         </div>
         <span>Report a Problem</span>
-      </div>
+      </div> */}
     </div>
   );
 }

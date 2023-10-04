@@ -75,17 +75,17 @@ export default function Friendship({ friendshipp, profileid }) {
         <div className="friends_menu_wrap">
           <button className="gray_btn" onClick={() => setFriendsMenu(true)}>
             <img src="../../../icons/friends.png" alt="" />
-            <span>Friends</span>
+            <span>Amigos</span>
           </button>
           {friendsMenu && (
             <div className="open_cover_menu" ref={menu}>
               <div className="open_cover_menu_item hover1">
                 <img src="../../../icons/favoritesOutline.png" alt="" />
-                Favorites
+                Favoritos
               </div>
               <div className="open_cover_menu_item hover1">
                 <img src="../../../icons/editFriends.png" alt="" />
-                Edit Friend list
+                Editar Lista de Amigos
               </div>
               {friendship?.following ? (
                 <div
@@ -93,7 +93,7 @@ export default function Friendship({ friendshipp, profileid }) {
                   onClick={() => unfollowHandler()}
                 >
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
-                  Unfollow
+                  Parar de Seguir
                 </div>
               ) : (
                 <div
@@ -101,7 +101,7 @@ export default function Friendship({ friendshipp, profileid }) {
                   onClick={() => followHandler()}
                 >
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
-                  Follow
+                  Seguir
                 </div>
               )}
               <div
@@ -119,7 +119,7 @@ export default function Friendship({ friendshipp, profileid }) {
         !friendship?.requestReceived && (
           <button className="blue_btn" onClick={() => addFriendHandler()}>
             <img src="../../../icons/addFriend.png" alt="" className="invert" />
-            <span>Add Friend</span>
+            <span>Adicionar Amigo</span>
           </button>
         )
       )}
@@ -130,7 +130,7 @@ export default function Friendship({ friendshipp, profileid }) {
             className="invert"
             alt=""
           />
-          <span>Cancel Request</span>
+          <span>Cancelar Pedido</span>
         </button>
       ) : (
         friendship?.requestReceived && (
@@ -145,13 +145,13 @@ export default function Friendship({ friendshipp, profileid }) {
                   className="open_cover_menu_item hover1"
                   onClick={() => acceptRequestHanlder()}
                 >
-                  Confirm
+                  Confirmar
                 </div>
                 <div
                   className="open_cover_menu_item hover1"
                   onClick={() => deleteRequestHanlder()}
                 >
-                  Delete
+                  Deletar
                 </div>
               </div>
             )}
@@ -162,22 +162,22 @@ export default function Friendship({ friendshipp, profileid }) {
         {friendship?.following ? (
           <button className="gray_btn" onClick={() => unfollowHandler()}>
             <img src="../../../icons/follow.png" alt="" />
-            <span>Following</span>
+            <span>Seguir</span>
           </button>
         ) : (
           <button className="blue_btn" onClick={() => followHandler()}>
             <img src="../../../icons/follow.png" className="invert" alt="" />
-            <span>Follow</span>
+            <span>Seguir</span>
           </button>
         )}
-        <button className={friendship?.friends ? "blue_btn" : "gray_btn"}>
+        {/* <button className={friendship?.friends ? "blue_btn" : "gray_btn"}>
           <img
             src="../../../icons/message.png"
             className={friendship?.friends && "invert"}
             alt=""
           />
           <span>Message</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );

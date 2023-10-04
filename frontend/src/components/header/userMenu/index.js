@@ -26,7 +26,7 @@ export default function UserMenu({ user }) {
               <span>
                 {user?.first_name} {user?.last_name}
               </span>
-              <span>See your profile</span>
+              <span>Veja seu perfil</span>
             </div>
           </Link>
           <div className="mmenu_splitter"></div>
@@ -35,8 +35,8 @@ export default function UserMenu({ user }) {
               <i className="report_filled_icon"></i>
             </div>
             <div className="mmenu_col">
-              <div className="mmenu_span1">Give feedback</div>
-              <div className="mmenu_span2">Help us improve facebook</div>
+              <div className="mmenu_span1">De seu feedback aqui</div>
+              <div className="mmenu_span2">Nos ajude a ser melhor para você!</div>
             </div>
           </div>
           <div className="mmenu_splitter"></div>
@@ -49,7 +49,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="settings_filled_icon"></i>
             </div>
-            <span>Settings & privacy</span>
+            <span>Configurações</span>
             <div className="rArrow">
               <i className="right_icon"></i>
             </div>
@@ -63,7 +63,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="help_filled_icon"></i>
             </div>
-            <span>Help & support</span>
+            <span>Central de Ajuda</span>
             <div className="rArrow">
               <i className="right_icon"></i>
             </div>
@@ -77,7 +77,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="dark_filled_icon"></i>
             </div>
-            <span>Display & Accessibility</span>
+            <span>Dark Mode</span>
             <div className="rArrow">
               <i className="right_icon"></i>
             </div>
@@ -91,7 +91,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="logout_filled_icon"></i>
             </div>
-            <span>Logout</span>
+            <span>Sair</span>
           </div>
         </div>
       )}

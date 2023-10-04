@@ -6,14 +6,14 @@ export default function Photos({ username, token, photos }) {
   return (
     <div className="profile_card">
       <div className="profile_card_header">
-        Photos
-        <div className="profile_header_link">See all photos</div>
+        Fotos
+        <div className="profile_header_link">Veja todos as Fotos</div>
       </div>
       <div className="profile_card_count">
         {photos.total_count === 0
           ? ""
           : photos.total_count === 1
-          ? "1 Photo"
+          ? "1 Foto(s)"
           : `${photos.total_count} photos`}
       </div>
       <div className="profile_card_grid">

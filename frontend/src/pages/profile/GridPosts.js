@@ -12,7 +12,7 @@ export default function GridPosts() {
           </div>
           <div className="gray_btn">
             <i className="manage_icon"></i>
-            Manage Posts
+            Configurar 
           </div>
         </div>
       </div>
@@ -20,12 +20,12 @@ export default function GridPosts() {
       <div className="createPost_body grid2">
         <div className="view_type active">
           <i className="list_icon filter_blue"></i>
-          List view
+          Lista de Posts
         </div>
-        <div className="view_type">
+        {/* <div className="view_type">
           <i className="grid_icon"></i>
           Grid view
-        </div>
+        </div> */}
       </div>
     </div>
   );

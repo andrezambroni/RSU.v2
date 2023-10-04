@@ -54,6 +54,7 @@ header {
   align-items: center;
   gap: 14px;
   transform: translateX(3px);
+  justify-content: center;
 }
 .middle_icon {
   position: relative;
@@ -79,7 +80,7 @@ header {
   transform: translateX(-5px);
 }
 .active {
-  border-bottom: 3px solid var(--blue-color);
+  border-bottom: 3px solid #EA4335;
   border-radius: 0;
   height: 56px;
   transform: translateX(0);
@@ -344,6 +345,7 @@ header {
   justify-content: center;
   background: var(--bg-third);
 }
+
 /*---Search All Menu-----*/
 
 /*-------User menu----*/
@@ -355,7 +357,7 @@ header {
   right: 0;
   width: 360px;
   border-radius: 10px;
-  background: var(--bg-primary);
+  background: rgba(155, 155, 155, 0.253);
   box-shadow: 2px 2px 2px var(--shadow-1);
   user-select: none;
   padding: 10px;
@@ -616,7 +618,7 @@ header {
   fill: var(--blue-color);
 }
 .active_link {
-  background: var(--light-blue-color);
-  color: var(--blue-color);
+  background: var(--light-red-color);
+  color: var(--color-primary);
 }
 /*----Active header----*/

@@ -8,7 +8,7 @@ import "./style.css";
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
 import ProfileMenu from "./ProfileMenu";
-import PplYouMayKnow from "./PplYouMayKnow";
+// import PplYouMayKnow from "./PplYouMayKnow";
 import CreatePost from "../../components/createPost";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
@@ -132,13 +132,14 @@ export default function Profile({ getAllPosts }) {
         <div className="profile_container">
           {loading ? (
             <>
-              <div className="profile_cover">
+                {/* foto de capa */}
+              {/* <div className="profile_cover">
                 <Skeleton
                   height="347px"
                   containerClassName="avatar-skeleton"
                   style={{ borderRadius: "8px" }}
                 />
-              </div>
+              </div> */}
               <div
                 className="profile_img_wrap"
                 style={{
@@ -237,7 +238,7 @@ export default function Profile({ getAllPosts }) {
       <div className="profile_bottom">
         <div className="profile_container">
           <div className="bottom_container">
-            <PplYouMayKnow />
+            {/* <PplYouMayKnow /> */}
             <div
               className={`profile_grid ${
                 check && scrollHeight >= height && leftHeight > 1000
@@ -259,9 +260,9 @@ export default function Profile({ getAllPosts }) {
                     </div>
                     <div className="profile_card">
                       <div className="profile_card_header">
-                        Photos
+                        Fotos
                         <div className="profile_header_link">
-                          See all photos
+                          Todas as fotos
                         </div>
                       </div>
                       <div className="sekelton_loader">
@@ -295,7 +296,7 @@ export default function Profile({ getAllPosts }) {
                     <Friends friends={profile.friends} />
                   </>
                 )}
-                <div className="relative_fb_copyright">
+                {/* <div className="relative_fb_copyright">
                   <Link to="/">Privacy </Link>
                   <span>. </span>
                   <Link to="/">Terms </Link>
@@ -310,7 +311,7 @@ export default function Profile({ getAllPosts }) {
                   <Link to="/">More </Link>
                   <span>. </span> <br />
                   Meta © 2022
-                </div>
+                </div> */}
               </div>
               <div className="profile_right">
                 {!visitor && (

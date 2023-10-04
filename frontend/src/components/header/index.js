@@ -53,7 +53,7 @@ export default function Header({ page, getAllPosts }) {
           <Search color={color} />
           <input
             type="text"
-            placeholder="Search Facebook"
+            placeholder="Procurar"
             className="hide_input"
           />
         </div>
@@ -68,7 +68,7 @@ export default function Header({ page, getAllPosts }) {
       <div className="header_middle">
         <Link
           to="/"
-          className={`middle_icon ${page === "home" ? "active" : "hover1"}`}
+          className={`con ${page === "home" ? "active" : "hover1"}`}
           onClick={() => getAllPosts()}
         >
           {page === "home" ? <HomeActive /> : <Home color={color} />}
@@ -79,16 +79,16 @@ export default function Header({ page, getAllPosts }) {
         >
           {page === "friends" ? <FriendsActive /> : <Friends color={color} />}
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        {/* <Link to="/" className="middle_icon hover1">
           <Watch color={color} />
           <div className="middle_notification">9+</div>
-        </Link>
-        <Link to="/" className="middle_icon hover1">
+        </Link> */}
+        {/* <Link to="/" className="middle_icon hover1">
           <Market color={color} />
         </Link>
         <Link to="/" className="middle_icon hover1 ">
           <Gaming color={color} />
-        </Link>
+        </Link> */}
       </div>
       <div className="header_right">
         <Link
@@ -100,7 +100,7 @@ export default function Header({ page, getAllPosts }) {
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>
-        <div
+        {/* <div
           className={`circle_icon hover1 ${showAllMenu && "active_header"}`}
           ref={allmenu}
         >
@@ -115,10 +115,10 @@ export default function Header({ page, getAllPosts }) {
           </div>
 
           {showAllMenu && <AllMenu />}
-        </div>
-        <div className="circle_icon hover1">
+        </div> */}
+        {/* <div className="circle_icon hover1">
           <Messenger />
-        </div>
+        </div> */}
         <div className="circle_icon hover1">
           <Notifications />
           <div className="right_notification">5</div>

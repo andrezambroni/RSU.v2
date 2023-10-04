@@ -60,7 +60,7 @@ export default function DisplayAccessibility({ setVisible }) {
           <input type="radio" name="dark" id="darkOn" />
         )}
       </label>
-      <div className="mmenu_main">
+      {/* <div className="mmenu_main">
         <div className="small_circle" style={{ width: "50px" }}>
           <i className="compact_icon"></i>
         </div>
@@ -70,16 +70,16 @@ export default function DisplayAccessibility({ setVisible }) {
             Make your font size smaller so more content can fit on the screen.
           </span>
         </div>
-      </div>
-      <label htmlFor="compactOff" className="hover1">
+      </div> */}
+      {/* <label htmlFor="compactOff" className="hover1">
         <span>Off</span>
         <input type="radio" name="compact" id="compactOff" />
       </label>
       <label htmlFor="compactOn" className="hover1">
         <span>On</span>
         <input type="radio" name="compact" id="compactOn" />
-      </label>
-      <div className="mmenu_item hover3">
+      </label> */}
+      {/* <div className="mmenu_item hover3">
         <div className="small_circle">
           <i className="keyboard_icon"></i>
         </div>
@@ -87,7 +87,7 @@ export default function DisplayAccessibility({ setVisible }) {
         <div className="rArrow">
           <i className="right_icon"></i>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

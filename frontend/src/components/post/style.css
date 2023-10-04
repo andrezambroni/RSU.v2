@@ -303,7 +303,7 @@
 .post_actions {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding: 0 8px 5px 8px;
   border-top: 1px solid var(--bg-third);
   border-bottom: 1px solid var(--bg-third);

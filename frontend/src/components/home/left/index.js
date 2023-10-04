@@ -23,7 +23,7 @@ export default function LeftHome({ user }) {
           notification={link.notification}
         />
       ))}
-      {!visible && (
+      {/* {!visible && (
         <div
           className="left_link hover2"
           onClick={() => {
@@ -35,7 +35,7 @@ export default function LeftHome({ user }) {
           </div>
           <span>See more</span>
         </div>
-      )}
+      )} */}
       {visible && (
         <div className="more_left">
           {left.slice(8, left.length).map((link, i) => (
@@ -46,7 +46,7 @@ export default function LeftHome({ user }) {
               notification={link.notification}
             />
           ))}
-          <div
+          {/* <div
             className="left_link hover2 "
             onClick={() => {
               setVisible(false);
@@ -56,15 +56,15 @@ export default function LeftHome({ user }) {
               <ArrowDown1 />
             </div>
             <span>Show less</span>
-          </div>
+          </div> */}
         </div>
       )}
       <div className="splitter"></div>
       <div className="shortcut">
-        <div className="heading">Your Shortcuts</div>
+        {/* <div className="heading">Your Shortcuts</div> */}
         <div className="edit_shortcut">Edit</div>
       </div>
-      <div className="shortcut_list">
+      {/* <div className="shortcut_list">
         <Shortcut
           link="https://www.youtube.com/c/MohamedHaJJi1/featured"
           img="../../images/ytb.png"
@@ -76,8 +76,8 @@ export default function LeftHome({ user }) {
           img="../../images/insta.png"
           name="My Instagram "
         />
-      </div>
-      <div className={`fb_copyright ${visible && "relative_fb_copyright"}`}>
+      </div> */}
+      {/* <div className={`fb_copyright ${visible && "relative_fb_copyright"}`}>
         <Link to="/">Privacy </Link>
         <span>. </span>
         <Link to="/">Terms </Link>
@@ -92,7 +92,7 @@ export default function LeftHome({ user }) {
         <Link to="/">More </Link>
         <span>. </span> <br />
         Meta © 2022
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -3,15 +3,15 @@ export default function Friends({ friends }) {
   return (
     <div className="profile_card">
       <div className="profile_card_header">
-        Friends
-        <div className="profile_header_link">See all friends</div>
+        Amigos
+        <div className="profile_header_link">Veja todos os Amigos</div>
       </div>
       {friends && (
         <div className="profile_card_count">
           {friends.length === 0
             ? ""
             : friends.length === 1
-            ? "1 Friend"
+            ? "1 Amigo(s)"
             : `${friends.length} Friends`}
         </div>
       )}

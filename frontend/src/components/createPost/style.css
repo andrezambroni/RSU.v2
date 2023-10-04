@@ -38,8 +38,9 @@
 }
 .createPost_body {
   padding: 0 10px 8px 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display:flex;
+  justify-content:center;
+  grid-template-columns: repeat(2, 1fr);
 }
 .createPost_icon {
   display: flex;

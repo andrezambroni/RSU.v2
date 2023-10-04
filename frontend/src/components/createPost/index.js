@@ -12,18 +12,18 @@ export default function CreatePost({ user, setVisible, profile }) {
             setVisible(true);
           }}
         >
-          What's on your mind, {user?.first_name}
+          Poste Algo, {user?.first_name}
         </div>
       </div>
       <div className="create_splitter"></div>
       <div className="createPost_body">
-        <div className="createPost_icon hover1">
+        {/* <div className="createPost_icon hover1">
           <LiveVideo color="#f3425f" />
           Live Video
-        </div>
+        </div> */}
         <div className="createPost_icon hover1">
           <Photo color="#4bbf67" />
-          Photo/Video
+          Foto/Video
         </div>
         {profile ? (
           <div className="createPost_icon hover1">
@@ -33,7 +33,7 @@ export default function CreatePost({ user, setVisible, profile }) {
         ) : (
           <div className="createPost_icon hover1">
             <Feeling color="#f7b928" />
-            Feeling/Activity
+            Atividade
           </div>
         )}
       </div>

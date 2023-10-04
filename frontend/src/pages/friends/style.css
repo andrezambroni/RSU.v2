@@ -6,7 +6,7 @@
   color: var(--color-primary);
 }
 .friends_left {
-  background: var(--bg-primary);
+  background: rgba(155, 155, 155, 0.253);
   box-shadow: 0 12px 12px var(--shadow-1);
   padding: 10px;
   position: fixed;
@@ -14,7 +14,7 @@
   height: 100%;
 }
 .friends_right {
-  background: var(--bg-secondary);
+  background: rgba(66, 66, 66, 0.253);
   padding: 2rem;
   position: absolute;
   top: 56px;
