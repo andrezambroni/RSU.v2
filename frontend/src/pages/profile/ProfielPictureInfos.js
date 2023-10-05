@@ -43,8 +43,8 @@ export default function ProfielPictureInfos({
                 {profile?.friends.length === 0
                   ? ""
                   : profile?.friends.length === 1
-                  ? "1 Friend"
-                  : `${profile?.friends.length} Friends`}
+                  ? "1 Amigo(s)"
+                  : `${profile?.friends.length} Amigo(s)`}
               </div>
             )}
           </div>
