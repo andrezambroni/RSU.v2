@@ -15,6 +15,9 @@ export default function LeftHome({ user }) {
           {user?.first_name} {user.last_name}
         </span>
       </Link>
+
+      <div className="splitter"></div>
+
       {left.slice(0, 8).map((link, i) => (
         <LeftLink
           key={i}
@@ -23,6 +26,11 @@ export default function LeftHome({ user }) {
           notification={link.notification}
         />
       ))}
+      <div className="splitter"></div>
+
+
+
+      
       {/* {!visible && (
         <div
           className="left_link hover2"
@@ -38,14 +46,14 @@ export default function LeftHome({ user }) {
       )} */}
       {visible && (
         <div className="more_left">
-          {left.slice(8, left.length).map((link, i) => (
+          {/* {left.slice(8, left.length).map((link, i) => (
             <LeftLink
               key={i}
               img={link.img}
               text={link.text}
               notification={link.notification}
             />
-          ))}
+          ))} */}
           {/* <div
             className="left_link hover2 "
             onClick={() => {
@@ -59,11 +67,11 @@ export default function LeftHome({ user }) {
           </div> */}
         </div>
       )}
-      <div className="splitter"></div>
-      <div className="shortcut">
+
+      {/* <div className="shortcut"> */}
         {/* <div className="heading">Your Shortcuts</div> */}
-        <div className="edit_shortcut">Edit</div>
-      </div>
+        {/* <div className="edit_shortcut">Edit</div> */}
+      {/* </div> */}
       {/* <div className="shortcut_list">
         <Shortcut
           link="https://www.youtube.com/c/MohamedHaJJi1/featured"

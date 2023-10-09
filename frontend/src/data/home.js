@@ -12,6 +12,12 @@ export const left = [
     img: "groups",
     notification: "5 new",
   },
+
+  {
+    text: "Events",
+    img: "events",
+  },
+  
   // {
   //   text: "Marketplace",
   //   img: "marketplace",
@@ -29,10 +35,7 @@ export const left = [
   //   text: "Pages",
   //   img: "pages",
   // },
-  {
-    text: "Events",
-    img: "events",
-  },
+
   // {
   //   text: "Ad Center",
   //   img: "ad",

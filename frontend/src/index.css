@@ -12,11 +12,12 @@ html {
 a {
   text-decoration: none;
   color: inherit;
+  margin: 0 40px;
 }
 :root {
-  --bg-primary: rgba(66, 66, 66, 0.253);
+  --bg-primary: rgb(194, 192, 192);
   --bg-secondary: rgba(196, 196, 196, 0.253);
-  --bg-third: #e4e6eb;
+  --bg-third: #dadada;
   --bg-forth: #f0f2f5;
   --color-primary: #EA4335;
   --color-secondary: #b83428;

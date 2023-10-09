@@ -136,6 +136,8 @@
   border-top: 1px solid var(--border-color);
   display: flex;
   padding: 0;
+  justify-content: center;
+  align-items: center;
 }
 .profile_menu a {
   height: 54px;
@@ -152,7 +154,7 @@
 }
 .profile_menu_active {
   height: 60px !important;
-  width: 65px !important;
+  width: 100px !important;
   margin: 0 !important;
   color: var(--color-secondary) !important;
   border-bottom: 3px solid var(--color-secondary);
@@ -241,7 +243,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1.4fr;
-  gap: 10px;
+  gap: 100px;
 }
 /*------ppl u may know------*/
 .left_header_grid {
@@ -292,6 +294,16 @@
   margin-top: 15px;
   
 }
+
+.profile_card_2{
+  background: var(--bg-primary);
+  border-radius: 20px;
+  box-shadow: 0 1px 2px var(--shadow-1);
+  padding: 10px 15px;
+  margin-top: 15px;
+}
+
+
 .profile_card_header {
   display: flex;
   align-items: center;

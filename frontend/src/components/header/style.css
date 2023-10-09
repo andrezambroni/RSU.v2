@@ -51,21 +51,23 @@ header {
 
 .header_middle {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 14px;
   transform: translateX(3px);
   justify-content: center;
+  margin: 0px;
 }
 .middle_icon {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 125px;
+  width: 100px;
   height: 50px;
   border-radius: 10px;
   cursor: pointer;
   transform: translateX(-2px);
+  margin: 0px;
 }
 .middle_icon:nth-child(2) {
   transform: translateX(-4px);
@@ -82,7 +84,7 @@ header {
 .active {
   border-bottom: 3px solid #EA4335;
   border-radius: 0;
-  height: 56px;
+  height: 48px;
   transform: translateX(0);
 }
 .active svg {
@@ -357,7 +359,7 @@ header {
   right: 0;
   width: 360px;
   border-radius: 10px;
-  background: rgba(155, 155, 155, 0.253);
+  background: var(--bg-third);
   box-shadow: 2px 2px 2px var(--shadow-1);
   user-select: none;
   padding: 10px;
