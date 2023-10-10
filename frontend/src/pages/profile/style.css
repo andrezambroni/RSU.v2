@@ -292,6 +292,7 @@
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 10px 15px;
   margin-top: 15px;
+  width: 80%;
   
 }
 
@@ -316,6 +317,7 @@
 
 .profile_left {
   float: left;
+  content: ;
 }
 
 .profile_right {

@@ -73,13 +73,14 @@ export default function Header({ page, getAllPosts }) {
           className={`con ${page === "home" ? "active" : "hover1"}`}
           onClick={() => getAllPosts()}
         >
-          {page === "home" ? <HomeActive /> : <Home color={color} />}
+          {page === "home" ? <HomeActive /> : <HomeActive color={color} />}
         </Link>
+
         <Link
           to="/friends"
           className={`middle_icon ${page === "friends" ? "active" : "hover1"}`}
         >
-          {page === "friends" ? <FriendsActive /> : <Friends color={color} />}
+          {page === "friends" ? <Friends /> : <Friends color={color} />}
         </Link>
 
         <Link
