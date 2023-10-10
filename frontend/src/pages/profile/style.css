@@ -7,7 +7,7 @@
   background: var(--bg-primary);
 }
 .profile_container {
-  max-width: 945px;
+  max-width: 100%;
   margin: 0 auto;
 }
 /* .profile_cover {
@@ -242,7 +242,7 @@
 .profile_grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 100px;
 }
 /*------ppl u may know------*/
@@ -295,14 +295,41 @@
   
 }
 
-.profile_card_2{
+ .profile_card_2{
   background: var(--bg-primary);
   border-radius: 20px;
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 10px 15px;
   margin-top: 15px;
+} 
+
+/* ---------------------------------------- */
+
+
+
+.profile_right_2 {
+ 
+  width: 360px;
+  position:relative;
+  
 }
 
+.profile_left {
+  float: left;
+}
+
+.profile_right {
+  float: left;
+  margin-left: 20px;
+  width: 505px;
+}
+
+
+
+
+
+
+/* ---------------------------------------- */
 
 .profile_card_header {
   display: flex;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Friends({ friends }) {
   return (
-    <div className="profile_card">
+    <div className="profile_card_2">
       <div className="profile_card_header">
         Amigos
         <div className="profile_header_link">Veja todos os Amigos</div>

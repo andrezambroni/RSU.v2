@@ -14,6 +14,8 @@ import {
   Notifications,
   Search,
   Watch,
+  GroupsActive,
+  EventsActive,
 } from "../../svg";
 import { useSelector } from "react-redux";
 import SearchMenu from "./SearchMenu";
@@ -23,7 +25,7 @@ import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 export default function Header({ page, getAllPosts }) {
   const { user } = useSelector((user) => ({ ...user }));
-  const color = "#65676b";
+  const color = "#000000";
   const [showSearchMenu, setShowSearchMenu] = useState(false);
   const [showAllMenu, setShowAllMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -84,16 +86,16 @@ export default function Header({ page, getAllPosts }) {
           to="/groups"
           className={`middle_icon ${page === "groups" ? "active" : "hover1"}`}
         >
-          {page === "groups" ? <FriendsActive /> : <Friends color={color} />}
-          {/* {page === "groups" ? <GroupsActive /> : <Groups color={color} />}   'vai ficar assim?*/}
+          {page === "groups" ? <GroupsActive /> : <GroupsActive  />}
+          
         </Link>
 
         <Link
           to="/events"
           className={`middle_icon ${page === "Events" ? "active" : "hover1"}`}
         >
-          {page === "events" ? <FriendsActive /> : <Friends color={color} />}
-          {/* {page === "Events" ? <EventsActive /> : <Events color={color} />}   'vai ficar assim?*/}
+          {page === "events" ? <EventsActive /> : <EventsActive  />}
+          
         </Link>
 
         {/* <Link to="/" className="middle_icon hover1">

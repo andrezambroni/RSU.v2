@@ -269,7 +269,7 @@ export default function Profile({ getAllPosts }) {
                         <HashLoader color="#1876f2" />
                       </div>
                     </div>
-                    <div className="profile_card">
+                    {/* <div className="profile_card">
                       <div className="profile_card_header">
                         Friends
                         <div className="profile_header_link">
@@ -279,7 +279,7 @@ export default function Profile({ getAllPosts }) {
                       <div className="sekelton_loader">
                         <HashLoader color="#1876f2" />
                       </div>
-                    </div>
+                    </div> */}
                   </>
                 ) : (
                   <>
@@ -293,7 +293,7 @@ export default function Profile({ getAllPosts }) {
                       token={user.token}
                       photos={photos}
                     />
-                    <Friends friends={profile.friends} />
+                    {/* <Friends friends={profile.friends} /> */}
                   </>
                 )}
                 {/* <div className="relative_fb_copyright">
@@ -334,6 +334,40 @@ export default function Profile({ getAllPosts }) {
                   </div>
                 )}
               </div>
+
+
+
+
+
+
+               <div className="profile_right_2">
+                {loading ? (
+                  <>
+                    <div className="profile_card_2">
+                      <div className="profile_card_header">
+                        Friends
+                        <div className="profile_header_link">
+                          See all friends
+                        </div>
+                      </div>
+                      <div className="sekelton_loader">
+                        <HashLoader color="#1876f2" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    
+                    <Friends friends={profile.friends} />
+                  </>
+                )}
+              </div>
+
+
+
+
+
+
             </div>
           </div>
         </div>

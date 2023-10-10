@@ -13,6 +13,9 @@ import axios from "axios";
 import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
 
+import Groups from "./pages/groups";
+import Events from "./pages/events";
+
 function App() {
   const [visible, setVisible] = useState(false);
   const { user, darkTheme } = useSelector((state) => ({ ...state }));
@@ -67,6 +70,33 @@ function App() {
             }
             exact
           />
+
+          <Route
+            path="/groups"
+            element={
+              <Groups
+                setVisible={setVisible}
+                posts={posts}
+                loading={loading}
+                getAllPosts={getAllPosts}
+              />
+            }
+            exact
+          />
+
+          <Route
+            path="/events"
+            element={
+              <Events
+                setVisible={setVisible}
+                posts={posts}
+                loading={loading}
+                getAllPosts={getAllPosts}
+              />
+            }
+            exact
+          />
+
           <Route
             path="/profile/:username"
             element={
