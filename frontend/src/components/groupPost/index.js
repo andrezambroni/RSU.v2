@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
-import ReactsPopup from "./ReactsPopup";
+import ReactsGroupPopup from "./ReactsGroupPopup";
 import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { getReacts, reactPost } from "../../functions/post";
+import { getGroupReacts, reactGroupPost } from "../../functions/post";
 import Comment from "./Comment";
 export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
@@ -25,7 +25,7 @@ export default function Post({ post, user, profile }) {
   }, [post]);
 
   const getPostReacts = async () => {
-    const res = await getReacts(post._id, user.token);
+    const res = await getGroupReacts(post._id, user.token);
     setReacts(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
@@ -33,7 +33,7 @@ export default function Post({ post, user, profile }) {
   };
 
   const reactHandler = async (type) => {
-    reactPost(post._id, type, user.token);
+    reactGroupPost(post._id, type, user.token);
     if (check == type) {
       setCheck();
       let index = reacts.findIndex((x) => x.react == check);
@@ -182,7 +182,7 @@ export default function Post({ post, user, profile }) {
         </div>
       </div>
       <div className="post_actions">
-        <ReactsPopup
+        <ReactsGroupPopup
           visible={visible}
           setVisible={setVisible}
           reactHandler={reactHandler}

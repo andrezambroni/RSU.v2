@@ -4,12 +4,12 @@ import GroupsActive from "../../svg/groupsActive";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
-import CreatePost from "../../components/createPost";
+import CreateGroupPost from "../../components/createGroupPost";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
 import SendVerification from "../../components/home/sendVerification";
-import Post from "../../components/post";
+import GroupPost from "../../components/groupPost";
 import "./style.css";
 export default function Groups({ setVisible, posts, loading, getAllPosts }) {
   const { user } = useSelector((state) => ({ ...state }));
@@ -25,7 +25,7 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
       <div className="home_middle" ref={middle}>
         {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
-        <CreatePost user={user} setVisible={setVisible} />
+        <CreateGroupPost user={user} setVisible={setVisible} />
         {loading ? (
           <div className="sekelton_loader">
             <HashLoader color="#1876f2" />
@@ -33,7 +33,7 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
         ) : (
           <div className="posts">
             {posts.map((post, i) => (
-              <Post key={i} post={post} user={user} />
+              <GroupPost key={i} post={post} user={user} />
             ))}
           </div>
         )}
