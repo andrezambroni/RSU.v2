@@ -16,11 +16,11 @@ a {
 }
 :root {
   --bg-primary: rgb(194, 192, 192);
-  --bg-secondary: rgba(196, 196, 196, 0.253);
+  --bg-secondary: #EDEDED;
   --bg-third: #dadada;
   --bg-forth: #f0f2f5;
-  --color-primary: #EA4335;
-  --color-secondary: #b83428;
+  --color-primary: #6800A3;
+  --color-secondary: #9e38da;
   --divider: #ced0d4;
   --dark-bg-primary: #18191a;
   --dark-bg-secondary: #242526;
@@ -43,7 +43,7 @@ a {
 .blue_btn {
   border: none;
   outline: none;
-  background: #EA4335;
+  background: var(--color-secondary);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
