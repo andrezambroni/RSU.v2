@@ -27,8 +27,8 @@ export default function CreatePost({ user, setVisible, profile }) {
         </div>
         {profile ? (
           <div className="createPost_icon hover1">
-            <i className="lifeEvent_icon"></i>
-            Life Event
+            {/* <i className="lifeEvent_icon"></i>
+            Life Event */}
           </div>
         ) : (
           <div className="createPost_icon hover1">

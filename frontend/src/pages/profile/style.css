@@ -288,17 +288,18 @@
 /*-----profile card--------*/
 .profile_card {
   background: var(--bg-primary);
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 10px 15px;
   margin-top: 15px;
-  width: 80%;
+  width: 100%;
+  
   
 }
 
  .profile_card_2{
   background: var(--bg-primary);
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 10px 15px;
   margin-top: 15px;
@@ -317,7 +318,7 @@
 
 .profile_left {
   float: left;
-  content: ;
+  
 }
 
 .profile_right {

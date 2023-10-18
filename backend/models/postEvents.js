@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { ObjectId } = mongoose.Schema;
 
-const postSchema = new mongoose.Schema(
+const postEventsSchema = new mongoose.Schema(
   {
     type: {
       type: String,
@@ -47,4 +47,4 @@ const postSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model("PostEvents", postEventsSchema);
