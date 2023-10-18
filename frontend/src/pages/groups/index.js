@@ -4,7 +4,7 @@ import GroupsActive from "../../svg/groupsActive";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
-import CreateGroupPost from "../../components/createGroupPost";
+import CreateGroupPost from "../../components/createPostGroups";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";

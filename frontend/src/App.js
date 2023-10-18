@@ -10,6 +10,7 @@ import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 
 import CreatePostGroupPopup from "./components/createPostGroupPopup";
+import CreatePostEventPopup from "./components/createPostEventPopup";
 
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
