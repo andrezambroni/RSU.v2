@@ -87,7 +87,7 @@ export default function CreatePostEventPopup({
       }
     } else if (text) {
       setLoading(true);
-      const response = await createPost(
+      const response = await createPostEvents(
         null,
         null,
         text,
@@ -99,7 +99,7 @@ export default function CreatePostEventPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...posts],
+          payload: [response.data, ...postsEvents],
         });
         setBackground("");
         setText("");

@@ -5,16 +5,17 @@ import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
 import useClickOutside from "../../helpers/clickOutside";
-import { createPostEvents } from "../../functions/postEvents";
+import { createPostGroups } from "../../functions/postGroups";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useDispatch } from "react-redux";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
+// import createPostGroups from "../createPostGroups";
 export default function CreatePostGroupPopup({
   user,
   setVisible,
-  postsEvents,
+  postsGroups,
   dispatch,
   profile,
 }) {
@@ -32,7 +33,7 @@ export default function CreatePostGroupPopup({
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
-      const response = await createPostEvents(
+      const response = await createPostGroups(
         null,
         background,
         text,
@@ -44,7 +45,7 @@ export default function CreatePostGroupPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...postsEvents],
+          payload: [response.data, ...postsGroups],
         });
         setBackground("");
         setText("");
@@ -65,7 +66,7 @@ export default function CreatePostGroupPopup({
       });
       const response = await uploadImages(formData, path, user.token);
 
-      const res = await createPostEvents(
+      const res = await createPostGroups(
         null,
         null,
         text,
@@ -77,7 +78,7 @@ export default function CreatePostGroupPopup({
       if (res.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [res.data, ...postsEvents],
+          payload: [res.data, ...postsGroups],
         });
         setText("");
         setImages("");
@@ -87,7 +88,7 @@ export default function CreatePostGroupPopup({
       }
     } else if (text) {
       setLoading(true);
-      const response = await createPost(
+      const response = await createPostGroups(
         null,
         null,
         text,
@@ -99,7 +100,7 @@ export default function CreatePostGroupPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...posts],
+          payload: [response.data, ...postsGroups],
         });
         setBackground("");
         setText("");

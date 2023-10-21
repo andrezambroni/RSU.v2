@@ -1,5 +1,5 @@
 import axios from "axios";
-export const createPostEvents = async (
+export const createPostGroups = async (
   type,
   background,
   text,
@@ -9,7 +9,7 @@ export const createPostEvents = async (
 ) => {
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/createPostEvents`,
+      `${process.env.REACT_APP_BACKEND_URL}/createPostGroups`,
       {
         type,
         background,
@@ -63,10 +63,10 @@ export const getReacts = async (postId, token) => {
     return error.response.data.message;
   }
 };
-export const commentEvents = async (postId, comment, image, token) => {
+export const commentGroups = async (postId, comment, image, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/commentEvents`,
+      `${process.env.REACT_APP_BACKEND_URL}/commentGroups`,
       {
         postId,
         comment,
