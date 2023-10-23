@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { ObjectId } = mongoose.Schema;
 
-const postEventsSchema = new mongoose.Schema(
+const postSchema = new mongoose.Schema(
   {
     type: {
       type: String,

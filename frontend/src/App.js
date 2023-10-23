@@ -55,6 +55,44 @@ function App() {
       });
     }
   };
+
+  // 
+
+  const [visible, setVisible] = useState(false);
+  const [{ loadingGroups, errorGroups, postsGroups }, dispatchGroups] = useReducer(postsGroupsReducer, {
+    loading: false,
+    posts: [],
+    error: "",
+  });
+  useEffect(() => {
+    getAllGroupsPosts();
+  }, []);
+  const getAllGroupsPosts = async () => {
+    try {
+      dispatch({
+        type: "POSTS_GROUPS_REQUEST",
+      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getAllGroupsposts`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      dispatch({
+        type: "POSTS_GROUPS_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "POSTS_GROUPS_ERROR",
+        payload: error.response.data.message,
+      });
+    }
+
+
+
   return (
     <div className={darkTheme && "dark"}>
       {visible && (
@@ -65,6 +103,9 @@ function App() {
           dispatch={dispatch}
         />
       )}
+
+        //
+
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route
@@ -79,10 +120,10 @@ function App() {
             path="/groups"
             element={
               <Groups
-                setVisible={setVisible}
-                posts={posts}
-                loading={loading}
-                getAllPosts={getAllPosts}
+                setVisible={setVisibleGroups}
+                posts={postsGroups}
+                loading={loadingGroups}
+                getAllPosts={getAllGroupsPosts}
               />
             }
             exact
