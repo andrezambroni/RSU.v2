@@ -6,9 +6,9 @@ import ReactsPopup from "./ReactsPopup";
 import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { comment, getReacts, reactPost } from "../../functions/post";
+import { commentGroups, getReacts, reactPost } from "../../functions/postGroups";
 import Comment from "./Comment";
-export default function Post({ post, user, profile }) {
+export default function PostGroups({ postGroups, user, profile }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [reacts, setReacts] = useState();
@@ -16,24 +16,53 @@ export default function Post({ post, user, profile }) {
   const [total, setTotal] = useState(0);
   const [count, setCount] = useState(1);
   const [checkSaved, setCheckSaved] = useState();
-  const [comments, setComments] = useState([]);
+  const [comments, setCommentsGroups] = useState([]);
   useEffect(() => {
     getPostReacts();
-  }, [post]);
+  }, [postGroups]);
   useEffect(() => {
-    setComments(post?.comments);
-  }, [post]);
+    setCommentsGroups(PostGroups?.comments);
+  }, [postGroups]);
 
   const getPostReacts = async () => {
-    const res = await getReacts(post._id, user.token);
-    setReacts(res.reacts);
-    setCheck(res.check);
-    setTotal(res.total);
-    setCheckSaved(res.checkSaved);
+    // const res = await getReacts(postGroups._id, user.token);
+    // setReacts(res.reacts);
+    // setCheck(res.check);
+    // setTotal(res.total);
+    // setCheckSaved(res.checkSaved);
+
+    setReacts( [
+      {
+        react: "like",
+        count: 0,
+      },
+      {
+        react: "love",
+        count: 0,
+      },
+      {
+        react: "haha",
+        count: 0,
+      },
+      {
+        react: "sad",
+        count: 0,
+      },
+      {
+        react: "wow",
+        count: 0,
+      },
+      {
+        react: "angry",
+        count: 0,
+      },
+    ])
+    
+
   };
 
   const reactHandler = async (type) => {
-    reactPost(post._id, type, user.token);
+    reactPost(postGroups._id, type, user.token);
     if (check == type) {
       setCheck();
       let index = reacts.findIndex((x) => x.react == check);
@@ -69,27 +98,27 @@ export default function Post({ post, user, profile }) {
     >
       <div className="post_header">
         <Link
-          to={`/profile/${post.user.username}`}
+          to={`/profile/${postGroups.user.username}`}
           className="post_header_left"
         >
-          <img src={post.user.picture} alt="" />
+          <img src={postGroups.user.picture} alt="" />
           <div className="header_col">
             <div className="post_profile_name">
-              {post.user.first_name} {post.user.last_name}
+              {postGroups.user.first_name} {postGroups.user.last_name}
               <div className="updated_p">
-                {post.type == "profilePicture" &&
+                {postGroups.type == "profilePicture" &&
                   `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                    postGroups.user.gender === "male" ? "his" : "her"
                   } profile picture`}
-                {post.type == "coverPicture" &&
+                {postGroups.type == "coverPicture" &&
                   `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                    postGroups.user.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
             </div>
             <div className="post_profile_privacy_date">
               <Moment fromNow interval={30}>
-                {post.createdAt}
+                {postGroups.createdAt}
               </Moment>
               . <Public color="#828387" />
             </div>
@@ -102,55 +131,55 @@ export default function Post({ post, user, profile }) {
           <Dots color="#828387" />
         </div>
       </div>
-      {post.background ? (
+      {postGroups.background ? (
         <div
           className="post_bg"
-          style={{ backgroundImage: `url(${post.background})` }}
+          style={{ backgroundImage: `url(${postGroups.background})` }}
         >
-          <div className="post_bg_text">{post.text}</div>
+          <div className="post_bg_text">{postGroups.text}</div>
         </div>
-      ) : post.type === null ? (
+      ) : postGroups.type === null ? (
         <>
-          <div className="post_text">{post.text}</div>
-          {post.images && post.images.length && (
+          <div className="post_text">{postGroups.text}</div>
+          {postGroups.images && postGroups.images.length && (
             <div
               className={
-                post.images.length === 1
+                postGroups.images.length === 1
                   ? "grid_1"
-                  : post.images.length === 2
+                  : postGroups.images.length === 2
                   ? "grid_2"
-                  : post.images.length === 3
+                  : postGroups.images.length === 3
                   ? "grid_3"
-                  : post.images.length === 4
+                  : postGroups.images.length === 4
                   ? "grid_4"
-                  : post.images.length >= 5 && "grid_5"
+                  : postGroups.images.length >= 5 && "grid_5"
               }
             >
-              {post.images.slice(0, 5).map((image, i) => (
+              {postGroups.images.slice(0, 5).map((image, i) => (
                 <img src={image.url} key={i} alt="" className={`img-${i}`} />
               ))}
-              {post.images.length > 5 && (
+              {postGroups.images.length > 5 && (
                 <div className="more-pics-shadow">
-                  +{post.images.length - 5}
+                  +{postGroups.images.length - 5}
                 </div>
               )}
             </div>
           )}
         </>
-      ) : post.type === "profilePicture" ? (
+      ) : postGroups.type === "profilePicture" ? (
         <div className="post_profile_wrap">
           <div className="post_updated_bg">
-            <img src={post.user.cover} alt="" />
+            <img src={postGroups.user.cover} alt="" />
           </div>
           <img
-            src={post.images[0].url}
+            src={postGroups.images[0].url}
             alt=""
             className="post_updated_picture"
           />
         </div>
       ) : (
         <div className="post_cover_wrap">
-          <img src={post.images[0].url} alt="" />
+          <img src={postGroups.images[0].url} alt="" />
         </div>
       )}
 
@@ -249,8 +278,8 @@ export default function Post({ post, user, profile }) {
         <div className="comments_order"></div>
         <CreateComment
           user={user}
-          postId={post._id}
-          setComments={setComments}
+          postId={postGroups._id}
+          setComments={setCommentsGroups}
           setCount={setCount}
         />
         {comments &&
@@ -269,14 +298,14 @@ export default function Post({ post, user, profile }) {
       {showMenu && (
         <PostMenu
           userId={user.id}
-          postUserId={post.user._id}
-          imagesLength={post?.images?.length}
+          postUserId={postGroups.user._id}
+          imagesLength={postGroups?.images?.length}
           setShowMenu={setShowMenu}
-          postId={post._id}
+          postId={postGroups._id}
           token={user.token}
           checkSaved={checkSaved}
           setCheckSaved={setCheckSaved}
-          images={post.images}
+          images={postGroups.images}
           postRef={postRef}
         />
       )}

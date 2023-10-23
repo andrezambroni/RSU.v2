@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
+import EmojiPickerBackgrounds from "./EmojiPickerBackground";
 
 export default function ImagePreview({
   text,

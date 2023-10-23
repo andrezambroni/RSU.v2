@@ -32,7 +32,7 @@ header {
   gap: 8px;
   background: var(--bg-forth);
   padding: 10px 32px 10px 10px;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: text;
 }
 .search input {
@@ -117,7 +117,7 @@ header {
   gap: 5px;
   cursor: pointer;
   padding: 3px 10px 3px 6px;
-  border-radius: 50px;
+  border-radius: 5px;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;

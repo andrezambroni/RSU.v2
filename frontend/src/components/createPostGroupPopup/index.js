@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
 import Picker from "emoji-picker-react";
-import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
+import EmojiPickerBackgrounds from "./EmojiPickerBackground";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
 import useClickOutside from "../../helpers/clickOutside";

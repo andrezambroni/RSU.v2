@@ -47,4 +47,4 @@ const postEventsSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("postEvents", postEventsSchema);
+module.exports = mongoose.model("post", postSchema);
