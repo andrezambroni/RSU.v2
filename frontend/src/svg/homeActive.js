@@ -6,7 +6,7 @@ function HomeActive() {
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       width="64px"
-      height="64px"
+      height="30px"
       viewBox="5 30 250 400"
       
     >

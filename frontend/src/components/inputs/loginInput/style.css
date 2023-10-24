@@ -21,7 +21,7 @@
   border-color: var(--blue-color);
 }
 .input_error_border {
-  border-color: #b94a48 !important;
+  border-color: var(--color-secondary) !important;
 }
 .input_wrap i {
   position: absolute;
@@ -32,7 +32,7 @@
 .input_error {
   position: relative;
   padding: 15px 10px;
-  background: #b94a48;
+  background: var(--color-primary);
   width: 100%;
   color: #fff;
   font-size: 13px;
@@ -40,14 +40,14 @@
   margin-bottom: 15px;
 }
 .error_arrow_top {
-  border-top: 10px solid #b94a48;
+  border-top: 10px solid var(--color-primary);
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   position: absolute;
   bottom: -10px;
 }
 .error_arrow_bottom {
-  border-bottom: 10px solid #b94a48;
+  border-bottom: 10px solid var(--color-primary);
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   position: absolute;
@@ -60,7 +60,7 @@
   top: -3px;
 }
 .error_arrow_left {
-  border-left: 10px solid #b94a48;
+  border-left: 10px solid var(--color-primary);
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   position: absolute;

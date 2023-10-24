@@ -82,7 +82,7 @@ header {
   transform: translateX(-5px);
 }
 .active {
-  border-bottom: 3px solid #EA4335;
+  border-bottom: 3px solid var(--color-secondary);
   border-radius: 0;
   height: 48px;
   transform: translateX(0);

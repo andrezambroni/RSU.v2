@@ -9,7 +9,7 @@ export const createPostGroups = async (
 ) => {
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/createPostGroups`,
+      `${process.env.REACT_APP_BACKEND_URL}/createPostsGroups`, 
       {
         type,
         background,

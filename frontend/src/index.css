@@ -107,7 +107,12 @@ a {
 
 /*-----Hovers-----*/
 .hover1:hover {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
+  border-bottom: 3px solid var(--color-secondary);
+  border-radius: 0px;
+  height: 48px;
+  transform: translateX(0);
+  align-items: center;
 }
 .hover2:hover {
   background: var(--bg-third);
@@ -120,7 +125,7 @@ a {
 .card {
   height: 500px;
   width: 500px;
-  background: red;
+  background: var(--color-secondary);
 }
 
 /*----Scrollbar----*/

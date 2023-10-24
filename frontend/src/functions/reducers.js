@@ -21,23 +21,42 @@ export function postsReducer(state, action) {
 export function postsGroupsReducer(state, action) {
   switch (action.type) {
     case "POSTS_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "POSTS_SUCCESS":
+      return { ...state, loadingGroups: true, errorGroups: "" };
+    case "POSTS_GROUPS_SUCCESS":
       return {
         ...state,
-        loading: false,
-        posts: action.payload,
-        error: "",
+        loadingGroups: false,
+        postsGroups: action.payload,
+        errorGroups: "",
       };
-    case "POSTS_ERROR":
-      return { ...state, loading: false, error: action.payload };
+    case "POSTS_GROUPS_ERROR":
+      return { ...state, loadingGroups: false, errorGroups: action.payload };
 
     default:
       return state;
   }
 }
 
+//
 
+export function postsEventsReducer(state, action) {
+  switch (action.type) {
+    case "POSTS_EVENTS_REQUEST":
+      return { ...state, loadingEvents: true, errorEvents: "" };
+    case "POSTS_EVENTS_SUCCESS":
+      return {
+        ...state,
+        loadingEvents: false,
+        postsEvents: action.payload,
+        errorEvents: "",
+      };
+    case "POSTS_EVENTS_ERROR":
+      return { ...state, loadingEvents: false, errorEvents: action.payload };
+
+    default:
+      return state;
+  }
+}
 
 
 export function profileReducer(state, action) {

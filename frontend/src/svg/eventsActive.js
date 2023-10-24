@@ -3,7 +3,7 @@ function EventsActive() {
     <svg
       width="64px"
       height="64px"
-      viewBox="0 0 33 18"
+      viewBox="-8 0 33 18"
       xmlns="http://www.w3.org/2000/svg"
       fill="#391D5C"
       class="bi bi-calendar2-event"

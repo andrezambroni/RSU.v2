@@ -14,7 +14,8 @@ import CreatePostEventPopup from "./components/createPostEventPopup";
 
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
-import { postsReducer } from "./functions/reducers";
+import { postsReducer, postsEventsReducer,postsGroupsReducer } from "./functions/reducers";
+
 import Friends from "./pages/friends";
 
 import Groups from "./pages/groups";
@@ -22,6 +23,8 @@ import Events from "./pages/events";
 
 function App() {
   const [visible, setVisible] = useState(false);
+  const [visibleGroups, setVisibleGroups] = useState(false);
+  const [visibleEvents, setVisibleEvents] = useState(false);
   const { user, darkTheme } = useSelector((state) => ({ ...state }));
   const [{ loading, error, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
@@ -56,41 +59,78 @@ function App() {
     }
   };
 
-  // 
-
-  const [visible, setVisible] = useState(false);
+  // GROUPS
+  
   const [{ loadingGroups, errorGroups, postsGroups }, dispatchGroups] = useReducer(postsGroupsReducer, {
-    loading: false,
-    posts: [],
-    error: "",
+    loadingGroups: false,
+    postsGroups: [],
+    errorGroups: "",
   });
   useEffect(() => {
     getAllGroupsPosts();
   }, []);
   const getAllGroupsPosts = async () => {
     try {
-      dispatch({
+      dispatchGroups({
         type: "POSTS_GROUPS_REQUEST",
       });
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/getAllGroupsposts`,
+        `${process.env.REACT_APP_BACKEND_URL}/getAllGroupsPosts`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       );
-      dispatch({
+      console.log( data, 'data')
+      dispatchGroups({
         type: "POSTS_GROUPS_SUCCESS",
         payload: data,
       });
     } catch (error) {
-      dispatch({
+      console.log( error, 'deu erro')
+      dispatchGroups({
         type: "POSTS_GROUPS_ERROR",
         payload: error.response.data.message,
       });
     }
+  }
 
+    //EVENTS
+
+   
+  const [{ loadingEvents, errorEvents, postsEvents }, dispatchEvents] = useReducer(postsEventsReducer, {
+    loadingEvents: false,
+    postsEvents: [],
+    errorEvents: "",
+  });
+  useEffect(() => {
+    getAllEventsPosts();
+  }, []);
+  const getAllEventsPosts = async () => {
+    try {
+      dispatchEvents({
+        type: "POSTS_EVENTS_REQUEST",
+      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getAllEventsPosts`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      dispatchEvents({
+        type: "POSTS_EVENTS_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatchEvents({
+        type: "POSTS_EVENTS_ERROR",
+        payload: error.response.data.message,
+      });
+    }
+  }
 
 
   return (
@@ -104,7 +144,26 @@ function App() {
         />
       )}
 
-        //
+      {visibleGroups && (
+        <CreatePostGroupPopup
+          user={user}
+          setVisible={setVisibleGroups}
+          posts={postsGroups}
+          dispatch={dispatchGroups}
+        />
+      )}
+
+      {visibleEvents && (
+        <CreatePostEventPopup
+          user={user}
+          setVisible={setVisibleEvents}
+          posts={postsEvents}
+          dispatch={dispatchEvents}
+        />
+      )}
+
+
+        
 
       <Routes>
         <Route element={<LoggedInRoutes />}>
@@ -133,10 +192,10 @@ function App() {
             path="/events"
             element={
               <Events
-                setVisible={setVisible}
-                posts={posts}
-                loading={loading}
-                getAllPosts={getAllPosts}
+                setVisible={setVisibleEvents}
+                posts={postsEvents}
+                loading={loadingEvents}
+                getAllPosts={getAllEventsPosts}
               />
             }
             exact
@@ -187,3 +246,4 @@ function App() {
 }
 
 export default App;
+

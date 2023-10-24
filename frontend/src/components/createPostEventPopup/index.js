@@ -14,7 +14,7 @@ import { uploadImages } from "../../functions/uploadImages";
 export default function CreatePostEventPopup({
   user,
   setVisible,
-  postsEvents,
+  posts,
   dispatch,
   profile,
 }) {
@@ -40,11 +40,12 @@ export default function CreatePostEventPopup({
         user.id,
         user.token
       );
+      console.log(response);
       setLoading(false);
       if (response.status === "ok") {
         dispatch({
-          type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...postsEvents],
+          type: profile ? "PROFILE_POSTS" : "POSTS_EVENTS_SUCCESS",
+          payload: [response.data, ...posts],
         });
         setBackground("");
         setText("");
@@ -77,7 +78,7 @@ export default function CreatePostEventPopup({
       if (res.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [res.data, ...postsEvents],
+          payload: [res.data, ...posts],
         });
         setText("");
         setImages("");
@@ -99,7 +100,7 @@ export default function CreatePostEventPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...postsEvents],
+          payload: [response.data, ...posts],
         });
         setBackground("");
         setText("");

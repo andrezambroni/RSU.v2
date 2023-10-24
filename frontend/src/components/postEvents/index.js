@@ -6,9 +6,9 @@ import ReactsPopup from "./ReactsPopup";
 import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { commentsEvents, getReacts, reactPost } from "../../functions/post";
+import { comments, getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
-export default function PostEvents({ postEvents, user, profile }) {
+export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [reacts, setReacts] = useState();
@@ -16,16 +16,16 @@ export default function PostEvents({ postEvents, user, profile }) {
   const [total, setTotal] = useState(0);
   const [count, setCount] = useState(1);
   const [checkSaved, setCheckSaved] = useState();
-  const [commentsEvents, setCommentsEvents] = useState([]);
+  const [comments, setComments] = useState([]);
   useEffect(() => {
     getPostReacts();
-  }, [postEvents]);
+  }, [post]);
   useEffect(() => {
-    setCommentsEvents(postEvents?.comments);
-  }, [postEvents]);
+    setComments(post?.comments);
+  }, [post]);
 
   const getPostReacts = async () => {
-    const res = await getReacts(postEvents._id, user.token);
+    const res = await getReacts(post._id, user.token);
     setReacts(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
@@ -33,7 +33,7 @@ export default function PostEvents({ postEvents, user, profile }) {
   };
 
   const reactHandler = async (type) => {
-    reactPost(postEvents._id, type, user.token);
+    reactPost(post._id, type, user.token);
     if (check == type) {
       setCheck();
       let index = reacts.findIndex((x) => x.react == check);
@@ -69,27 +69,27 @@ export default function PostEvents({ postEvents, user, profile }) {
     >
       <div className="post_header">
         <Link
-          to={`/profile/${postEvents.user.username}`}
+          to={`/profile/${post.user.username}`}
           className="post_header_left"
         >
-          <img src={postEvents.user.picture} alt="" />
+          <img src={post.user.picture} alt="" />
           <div className="header_col">
             <div className="post_profile_name">
-              {postEvents.user.first_name} {postEvents.user.last_name}
+              {post.user.first_name} {post.user.last_name}
               <div className="updated_p">
-                {postEvents.type == "profilePicture" &&
+                {post.type == "profilePicture" &&
                   `updated ${
-                    postEvents.user.gender === "male" ? "his" : "her"
+                    post.user.gender === "male" ? "his" : "her"
                   } profile picture`}
-                {postEvents.type == "coverPicture" &&
+                {post.type == "coverPicture" &&
                   `updated ${
-                    postEvents.user.gender === "male" ? "his" : "her"
+                    post.user.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
             </div>
             <div className="post_profile_privacy_date">
               <Moment fromNow interval={30}>
-                {postEvents.createdAt}
+                {post.createdAt}
               </Moment>
               . <Public color="#828387" />
             </div>
@@ -102,55 +102,55 @@ export default function PostEvents({ postEvents, user, profile }) {
           <Dots color="#828387" />
         </div>
       </div>
-      {postEvents.background ? (
+      {post.background ? (
         <div
           className="post_bg"
-          style={{ backgroundImage: `url(${postEvents.background})` }}
+          style={{ backgroundImage: `url(${post.background})` }}
         >
-          <div className="post_bg_text">{postEvents.text}</div>
+          <div className="post_bg_text">{post.text}</div>
         </div>
-      ) : postEvents.type === null ? (
+      ) : post.type === null ? (
         <>
-          <div className="post_text">{postEvents.text}</div>
-          {postEvents.images && postEvents.images.length && (
+          <div className="post_text">{post.text}</div>
+          {post.images && post.images.length && (
             <div
               className={
-                postEvents.images.length === 1
+                post.images.length === 1
                   ? "grid_1"
-                  : postEvents.images.length === 2
+                  : post.images.length === 2
                   ? "grid_2"
-                  : postEvents.images.length === 3
+                  : post.images.length === 3
                   ? "grid_3"
-                  : postEvents.images.length === 4
+                  : post.images.length === 4
                   ? "grid_4"
-                  : postEvents.images.length >= 5 && "grid_5"
+                  : post.images.length >= 5 && "grid_5"
               }
             >
-              {postEvents.images.slice(0, 5).map((image, i) => (
+              {post.images.slice(0, 5).map((image, i) => (
                 <img src={image.url} key={i} alt="" className={`img-${i}`} />
               ))}
-              {postEvents.images.length > 5 && (
+              {post.images.length > 5 && (
                 <div className="more-pics-shadow">
-                  +{postEvents.images.length - 5}
+                  +{post.images.length - 5}
                 </div>
               )}
             </div>
           )}
         </>
-      ) : postEvents.type === "profilePicture" ? (
+      ) : post.type === "profilePicture" ? (
         <div className="post_profile_wrap">
           <div className="post_updated_bg">
-            <img src={postEvents.user.cover} alt="" />
+            <img src={post.user.cover} alt="" />
           </div>
           <img
-            src={postEvents.images[0].url}
+            src={post.images[0].url}
             alt=""
             className="post_updated_picture"
           />
         </div>
       ) : (
         <div className="post_cover_wrap">
-          <img src={postEvents.images[0].url} alt="" />
+          <img src={post.images[0].url} alt="" />
         </div>
       )}
 
@@ -177,7 +177,7 @@ export default function PostEvents({ postEvents, user, profile }) {
           <div className="reacts_count_num">{total > 0 && total}</div>
         </div>
         <div className="to_right">
-          <div className="comments_count">{commentsEvents.length} Comentar</div>
+          <div className="comments_count">{comments.length} Comentar</div>
           {/* <div className="share_count">0 share</div> */}
         </div>
       </div>
@@ -249,18 +249,18 @@ export default function PostEvents({ postEvents, user, profile }) {
         <div className="comments_order"></div>
         <CreateComment
           user={user}
-          postId={postEvents._id}
-          setComments={setCommentsEvents}
+          postId={post._id}
+          setComments={setComments}
           setCount={setCount}
         />
-        {commentsEvents &&
-          commentsEvents
+        {comments &&
+          comments
             .sort((a, b) => {
               return new Date(b.commentAt) - new Date(a.commentAt);
             })
             .slice(0, count)
             .map((comment, i) => <Comment comment={comment} key={i} />)}
-        {count < commentsEvents.length && (
+        {count < comments.length && (
           <div className="view_comments" onClick={() => showMore()}>
             View more comments
           </div>
@@ -269,14 +269,14 @@ export default function PostEvents({ postEvents, user, profile }) {
       {showMenu && (
         <PostMenu
           userId={user.id}
-          postUserId={postEvents.user._id}
-          imagesLength={postEvents?.images?.length}
+          postUserId={post.user._id}
+          imagesLength={post?.images?.length}
           setShowMenu={setShowMenu}
-          postId={postEvents._id}
+          postId={post._id}
           token={user.token}
           checkSaved={checkSaved}
           setCheckSaved={setCheckSaved}
-          images={postEvents.images}
+          images={post.images}
           postRef={postRef}
         />
       )}

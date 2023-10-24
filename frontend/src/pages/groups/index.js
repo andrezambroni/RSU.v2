@@ -12,6 +12,7 @@ import SendVerification from "../../components/home/sendVerification";
 import GroupPost from "../../components/groupPost";
 import "./style.css";
 export default function Groups({ setVisible, posts, loading, getAllPosts }) {
+  console.log(posts, 'posts de grupo front')
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
   const [height, setHeight] = useState();

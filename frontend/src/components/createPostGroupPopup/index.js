@@ -15,7 +15,7 @@ import { uploadImages } from "../../functions/uploadImages";
 export default function CreatePostGroupPopup({
   user,
   setVisible,
-  postsGroups,
+  posts,
   dispatch,
   profile,
 }) {
@@ -45,7 +45,7 @@ export default function CreatePostGroupPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...postsGroups],
+          payload: [response.data, ...posts],
         });
         setBackground("");
         setText("");
@@ -78,7 +78,7 @@ export default function CreatePostGroupPopup({
       if (res.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [res.data, ...postsGroups],
+          payload: [res.data, ...posts],
         });
         setText("");
         setImages("");
@@ -100,7 +100,7 @@ export default function CreatePostGroupPopup({
       if (response.status === "ok") {
         dispatch({
           type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
-          payload: [response.data, ...postsGroups],
+          payload: [response.data, ...posts],
         });
         setBackground("");
         setText("");
