@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
-import CreatePost from "../../components/createPost";
+import CreatePostEvents from "../../components/createPostEvents";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
 import SendVerification from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
-import Post from "../../components/post";
+import EventPost from "../../components/eventPost";
 import "./style.css";
-export default function Home({ setVisible, posts, loading, getAllPosts }) {
+export default function Events({ setVisible, posts, loading, getAllPosts }) {
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
   const [height, setHeight] = useState();
@@ -23,7 +23,7 @@ export default function Home({ setVisible, posts, loading, getAllPosts }) {
       <div className="home_middle" ref={middle}>
         {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
-        <CreatePost user={user} setVisible={setVisible} />
+        <CreatePostEvents user={user} setVisible={setVisible} />
         {loading ? (
           <div className="sekelton_loader">
             <HashLoader color="#1876f2" />
@@ -31,7 +31,7 @@ export default function Home({ setVisible, posts, loading, getAllPosts }) {
         ) : (
           <div className="posts">
             {posts.map((post, i) => (
-              <Post key={i} post={post} user={user} />
+              <EventPost key={i} post={post} user={user} />
             ))}
           </div>
         )}

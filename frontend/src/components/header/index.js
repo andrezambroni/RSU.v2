@@ -53,11 +53,7 @@ export default function Header({ page, getAllPosts }) {
           }}
         >
           <Search color={color} />
-          <input
-            type="text"
-            placeholder="Procurar"
-            className="hide_input"
-          />
+          <input type="text" placeholder="Procurar" className="hide_input" />
         </div>
       </div>
       {showSearchMenu && (
@@ -73,30 +69,28 @@ export default function Header({ page, getAllPosts }) {
           className={`con ${page === "home" ? "active" : "hover1"}`}
           onClick={() => getAllPosts()}
         >
-          {page === "home" ? <HomeActive /> : <HomeActive color={color} />}
+          {page === "home" ? <HomeActive /> : <HomeActive />}
         </Link>
 
         <Link
           to="/friends"
           className={`middle_icon ${page === "friends" ? "active" : "hover1"}`}
         >
-          {page === "friends" ? <Friends /> : <Friends color={color} />}
+          {page === "friends" ? <FriendsActive /> : <FriendsActive />}
         </Link>
 
         <Link
           to="/groups"
           className={`middle_icon ${page === "groups" ? "active" : "hover1"}`}
         >
-          {page === "groups" ? <GroupsActive /> : <GroupsActive  />}
-          
+          {page === "groups" ? <GroupsActive /> : <GroupsActive />}
         </Link>
 
         <Link
           to="/events"
-          className={`middle_icon ${page === "Events" ? "active" : "hover1"}`}
+          className={`middle_icon ${page === "events" ? "active" : "hover1"}`}
         >
-          {page === "events" ? <EventsActive /> : <EventsActive  />}
-          
+          {page === "events" ? <EventsActive /> : <EventsActive />}
         </Link>
 
         {/* <Link to="/" className="middle_icon hover1">

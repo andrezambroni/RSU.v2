@@ -12,7 +12,7 @@ html {
 a {
   text-decoration: none;
   color: inherit;
-  margin: 0 40px;
+  margin: 0 0px;
 }
 :root {
   --bg-primary: rgb(194, 192, 192);

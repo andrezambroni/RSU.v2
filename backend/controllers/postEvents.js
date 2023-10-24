@@ -10,6 +10,7 @@ exports.createPostEvents = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 exports.getAllPostEvents = async (req, res) => {
   try {
     const followingTemp = await User.findById(req.user.id).select("following");

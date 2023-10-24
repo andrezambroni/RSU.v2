@@ -23,10 +23,10 @@ export default function LoginForm({ setVisible }) {
   };
   const loginValidation = Yup.object({
     email: Yup.string()
-      .required("Email address is required.")
-      .email("Must be a valid email.")
+      .required("É necessário um endereço de e-mail.")
+      .email("Deve ser um e-mail válido")
       .max(100),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string().required("Senha requerida"),
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -51,9 +51,9 @@ export default function LoginForm({ setVisible }) {
   return (
     <div className="login_wrap">
       <div className="login_1">
-         <img src="../../icons/Logo_US.svg" alt="" /> 
-        <span>
-          A melhor integração para você!
+         <img src="../../icons/Logo_US2.svg" alt="" /> 
+        <span><b>UniSocial </b>
+          <br></br>A melhor integração <br></br><b>para você!</b>
         </span>
       </div>
       <div className="login_2">
@@ -105,7 +105,7 @@ export default function LoginForm({ setVisible }) {
           </button>
         </div>
         <Link to="/" className="sign_extra">
-          <b>Create a Page</b> for a celebrity, brand or business.
+          <b>Crie uma página</b> para você, seu grupo ou faculdade.
         </Link>
       </div>
     </div>

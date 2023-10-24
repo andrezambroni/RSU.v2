@@ -11,10 +11,11 @@
   height: 78vh;
   color: var(--color-primary);
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 10px;
 }
 .login_1 {
   /* width: 300px; */
+  
   
   
  
@@ -25,6 +26,7 @@
 }
 .login_2 {
   text-align: center;
+  margin-top: 0px;
   
 }
 .login_2_wrap {
@@ -282,8 +284,9 @@
   .login_1 {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
     margin-bottom: 15vh;
+    align-items: center;
   }
   .login_1 img {
     width: 300px;
@@ -291,6 +294,8 @@
   }
   .login_1 span {
     font-size: 35px;
+    margin-top: 50px;
+    margin-bottom: 0px;
   }
   .login_2_wrap {
     width: 400px;

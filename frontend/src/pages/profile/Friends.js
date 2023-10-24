@@ -12,7 +12,7 @@ export default function Friends({ friends }) {
             ? ""
             : friends.length === 1
             ? "1 Amigo(s)"
-            : `${friends.length} Friends`}
+            : `${friends.length} Amigo(s)`}
         </div>
       )}
       <div className="profile_card_grid">

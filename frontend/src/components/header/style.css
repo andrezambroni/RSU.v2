@@ -9,6 +9,7 @@ header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   color: var(--color-primary);
+  border-radius: .3125rem;
 }
 /*---Header left-----*/
 .header_left {
@@ -620,7 +621,7 @@ header {
   fill: var(--blue-color);
 }
 .active_link {
-  background: var(--light-red-color);
+  background: #c6b4dd;
   color: var(--color-primary);
 }
 /*----Active header----*/

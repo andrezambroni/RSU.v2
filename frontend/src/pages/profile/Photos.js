@@ -14,7 +14,7 @@ export default function Photos({ username, token, photos }) {
           ? ""
           : photos.total_count === 1
           ? "1 Foto(s)"
-          : `${photos.total_count} photos`}
+          : `${photos.total_count} foto(s)`}
       </div>
       <div className="profile_card_grid">
         {photos.resources &&

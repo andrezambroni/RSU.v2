@@ -89,7 +89,7 @@
   width: 180px;
   height: 180px;
   transform: translateY(-3.6rem);
-  border-radius: 50%;
+  border-radius: 5px;
   background-repeat: no-repeat;
   border: 2px solid #fff;
   background: #fff;
@@ -391,7 +391,7 @@
 .profile_friend_imgs img {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 5px;
   box-shadow: 0 1px 2px var(--shadow-1);
 }
 .profile_friend_imgs img:hover {

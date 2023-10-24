@@ -6,7 +6,7 @@ import ReactsEventPopup from "./ReactsEventPopup";
 import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { getEventReacts, reactEventPost } from "../../functions/post";
+import { getEventsReact, reactPostEvents } from "../../functions/post";
 import Comment from "./Comment";
 export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
@@ -25,15 +25,44 @@ export default function Post({ post, user, profile }) {
   }, [post]);
 
   const getPostReacts = async () => {
-    const res = await getEventReacts(post._id, user.token);
-    setReacts(res.reacts);
-    setCheck(res.check);
-    setTotal(res.total);
-    setCheckSaved(res.checkSaved);
+    // const res = await getEventReacts(post._id, user.token);
+    // setReacts(res.reacts);
+    // setCheck(res.check);
+    // setTotal(res.total);
+    // setCheckSaved(res.checkSaved);
+
+
+    setReacts( [
+      {
+        react: "like",
+        count: 0,
+      },
+      {
+        react: "love",
+        count: 0,
+      },
+      {
+        react: "haha",
+        count: 0,
+      },
+      {
+        react: "sad",
+        count: 0,
+      },
+      {
+        react: "wow",
+        count: 0,
+      },
+      {
+        react: "angry",
+        count: 0,
+      },
+    ])
+
   };
 
   const reactHandler = async (type) => {
-    reactEventPost(post._id, type, user.token);
+    reactPostEvents(post._id, type, user.token);
     if (check == type) {
       setCheck();
       let index = reacts.findIndex((x) => x.react == check);

@@ -75,7 +75,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
           className="gray_btn hover1 w100"
           onClick={() => setShowBio(true)}
         >
-          Add Bio
+          Adicionar Descrição
         </button>
       )}
       {showBio && (
@@ -154,7 +154,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
           className="gray_btn hover1 w100"
           onClick={() => setVisible(true)}
         >
-          Edit Details
+          Editar Detalhes
         </button>
       )}
       {visible && !visitor && (
