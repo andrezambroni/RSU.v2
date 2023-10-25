@@ -26,6 +26,7 @@ export default function CreatePostEventPopup({
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
   const [background, setBackground] = useState("");
+  const [category, setCategory] = useState("");
   useClickOutside(popup, () => {
     setVisible(false);
   });
@@ -38,7 +39,8 @@ export default function CreatePostEventPopup({
         text,
         null,
         user.id,
-        user.token
+        user.token, 
+        category
       );
       console.log(response);
       setLoading(false);
@@ -49,6 +51,7 @@ export default function CreatePostEventPopup({
         });
         setBackground("");
         setText("");
+        setCategory("");
         setVisible(false);
       } else {
         setError(response);
@@ -72,7 +75,8 @@ export default function CreatePostEventPopup({
         text,
         response,
         user.id,
-        user.token
+        user.token,
+        category
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -83,6 +87,7 @@ export default function CreatePostEventPopup({
         setText("");
         setImages("");
         setVisible(false);
+        setCategory("");
       } else {
         setError(res);
       }
@@ -94,7 +99,8 @@ export default function CreatePostEventPopup({
         text,
         null,
         user.id,
-        user.token
+        user.token,
+        category
       );
       setLoading(false);
       if (response.status === "ok") {

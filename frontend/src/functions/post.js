@@ -64,7 +64,8 @@ export const createPostEvents = async (
   text,
   images,
   user,
-  token
+  token,
+  category
 ) => {
   try {
     const { data } = await axios.post(
@@ -75,6 +76,7 @@ export const createPostEvents = async (
         text,
         images,
         user,
+        category,
       },
       {
         headers: {
