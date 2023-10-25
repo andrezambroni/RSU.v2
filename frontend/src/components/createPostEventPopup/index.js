@@ -140,9 +140,12 @@ export default function CreatePostEventPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
-              <img src="../../../icons/public.png" alt="" />
-              <span>Public</span>
-              <i className="arrowDown_icon"></i>
+              <select id="category">
+                <option id="palestra">Palestra</option>
+                <option id="festa">Festa</option>
+                <option id="evento_universitario">Evento Universitário</option>
+                <option id="outro">Outro</option>
+              </select>
             </div>
           </div>
         </div>
