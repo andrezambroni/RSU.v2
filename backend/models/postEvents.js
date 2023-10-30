@@ -41,6 +41,9 @@ const postEventsSchema = new mongoose.Schema(
         },
       },
     ],
+    category:{
+      type: String,
+    },
   },
   {
     timestamps: true,

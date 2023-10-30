@@ -41,6 +41,9 @@ const postGroupsSchema = new mongoose.Schema(
         },
       },
     ],
+    category: {
+      type: String,
+    }
   },
   {
     timestamps: true,

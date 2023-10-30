@@ -2,6 +2,8 @@ const Post = require("../models/postGroups");
 const User = require("../models/User");
 
 exports.createGroupsPost = async (req, res) => {
+  
+  console.log(req.body,'req.body');
   try {
     const post = await new Post(req.body).save();
     await post.populate("user", "first_name last_name cover picture username");
@@ -11,13 +13,15 @@ exports.createGroupsPost = async (req, res) => {
   }
 };
 exports.getAllGroupsPosts = async (req, res) => {
-  console.log('passou por aqui')
+  const category = req?.body?.category;
+  console.log(category,'category');
+  console.log(req.body,'req.body');
   try {
     const followingTemp = await User.findById(req.user.id).select("following");
     const following = followingTemp.following;
     console.log('parte 1')
     const promises = following.map((user) => {
-      return Post.find({ user: user })
+      return Post.find({ user: user, category:category })
         .populate("user", "first_name last_name picture username cover")
         .populate("comments.commentBy", "first_name last_name picture username")
         .sort({ createdAt: -1 })

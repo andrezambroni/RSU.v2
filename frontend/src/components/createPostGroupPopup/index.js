@@ -19,7 +19,6 @@ export default function CreatePostGroupPopup({
   dispatch,
   profile,
 }) {
-  
   const popup = useRef(null);
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
@@ -27,9 +26,14 @@ export default function CreatePostGroupPopup({
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
   const [background, setBackground] = useState("");
+  const [category, setCategory] = useState("");
   useClickOutside(popup, () => {
     setVisible(false);
   });
+  const handleChange = (e) => {
+    setCategory(e.target.value);
+  };
+  console.log('category', category)
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
@@ -39,7 +43,9 @@ export default function CreatePostGroupPopup({
         text,
         null,
         user.id,
-        user.token
+        user.token,
+        category
+        
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -72,7 +78,8 @@ export default function CreatePostGroupPopup({
         text,
         response,
         user.id,
-        user.token
+        user.token,
+        category
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -94,7 +101,8 @@ export default function CreatePostGroupPopup({
         text,
         null,
         user.id,
-        user.token
+        user.token,
+        category
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -134,6 +142,13 @@ export default function CreatePostGroupPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
+              <select id="category" value={category} onChange={handleChange}>
+                <option id="palestra">Palestra</option>
+                <option id="festa">Festa</option>
+                <option id="evento_universitario">Evento Universitário</option>
+                <option id="outro">Outro</option>
+              </select>
+
               <img src="../../../icons/public.png" alt="" />
               <span>Public</span>
               <i className="arrowDown_icon"></i>

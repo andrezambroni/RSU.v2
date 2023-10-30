@@ -8,17 +8,17 @@ export default function ProfileMenu() {
         <Link to="/" className="profile_menu_active">
           Publicações
         </Link>
-        <Link to="/" className="hover1">
+        {/* <Link to="/" className="hover1">
         Sobre
-        </Link>
-        <Link to="/" className="hover1">
+        </Link> */}
+        <Link to="./friends" className="hover1">
           Amigos
         </Link>
         <Link to="/" className="hover1">
-          Fotos
+          Meus Grupos
         </Link>
         <Link to="/" className="hover1">
-          Videos
+          Meus Eventos
         </Link>
         {/* <Link to="/" className="hover1">
           Check-ins

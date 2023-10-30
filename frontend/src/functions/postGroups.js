@@ -5,8 +5,17 @@ export const createPostGroups = async (
   text,
   images,
   user,
-  token
+  token,
+  category
+  
 ) => {
+  console.log(type,
+    background,
+    text,
+    images,
+    user,
+    category,
+    token)
   try {
     const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/createPostsGroups`, 
@@ -16,6 +25,7 @@ export const createPostGroups = async (
         text,
         images,
         user,
+        category,
       },
       {
         headers: {

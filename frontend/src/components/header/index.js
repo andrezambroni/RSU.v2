@@ -66,7 +66,7 @@ export default function Header({ page, getAllPosts }) {
       <div className="header_middle">
         <Link
           to="/"
-          className={`con ${page === "home" ? "active" : "hover1"}`}
+          className={`middle_icon ${page === "home" ? "active" : "hover1"}`}
           onClick={() => getAllPosts()}
         >
           {page === "home" ? <HomeActive /> : <HomeActive />}
