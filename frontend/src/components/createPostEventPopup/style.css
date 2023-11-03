@@ -62,12 +62,6 @@
 .box_privacy span {
   margin-bottom: 1px;
 }
-
-.box_privacy#category{
-  
-}
-
-
 .flex_center {
   min-height: 90px;
   position: relative;
@@ -422,14 +416,14 @@
 
 
 /* categories  */
-
-
-
-
-
-
-
-
+select {
+  width: 100%;
+  color: var(--bg-primary);
+}
+option {
+  width: 100%;
+  color: var(--color-primary);
+}
 /* categories  */
 
 

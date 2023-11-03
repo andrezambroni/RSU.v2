@@ -140,11 +140,13 @@ export default function CreatePostEventPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
-              <select id="category">
+              <select classname="category">
+                <option>--Selecionar--</option>
                 <option id="palestra">Palestra</option>
                 <option id="festa">Festa</option>
                 <option id="evento_universitario">Evento Universitário</option>
                 <option id="outro">Outro</option>
+                {/* {category = document.querySelector(".category")} */}
               </select>
             </div>
           </div>
