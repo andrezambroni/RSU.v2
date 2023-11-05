@@ -113,7 +113,7 @@ function App() {
         type: "POSTS_EVENTS_REQUEST",
       });
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/getAllEventsPosts`,
+        `${process.env.REACT_APP_BACKEND_URL}/getAllPostEvents`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

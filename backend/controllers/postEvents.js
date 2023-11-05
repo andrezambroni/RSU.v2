@@ -1,9 +1,10 @@
-const postEvents = require("../models/postEvents");
+const PostEvents = require("../models/postEvents");
 const User = require("../models/User");
 
 exports.createPostEvents = async (req, res) => {
+  console.log('cheguei')
   try {
-    const postEvents = await new postEvents(req.body).save();
+    const postEvents = await new PostEvents(req.body).save();
     await postEvents.populate("user", "first_name last_name cover picture username");
     res.json(postEvents);
   } catch (error) {
@@ -16,14 +17,14 @@ exports.getAllPostEvents = async (req, res) => {
     const followingTemp = await User.findById(req.user.id).select("following");
     const following = followingTemp.following;
     const promises = following.map((user) => {
-      return postEvents.find({ user: user })
+      return PostEvents.find({ user: user })
         .populate("user", "first_name last_name picture username cover")
         .populate("comments.commentBy", "first_name last_name picture username")
         .sort({ createdAt: -1 })
         .limit(10);
     });
     const followingPostEvents = await (await Promise.all(promises)).flat();
-    const userPostEvents = await postEvents.find({ user: req.user.id })
+    const userPostEvents = await PostEvents.find({ user: req.user.id })
       .populate("user", "first_name last_name picture username cover")
       .populate("comments.commentBy", "first_name last_name picture username")
       .sort({ createdAt: -1 })
@@ -42,7 +43,7 @@ exports.getAllPostEvents = async (req, res) => {
 exports.comment = async (req, res) => {
   try {
     const { comment, image, postEventsId } = req.body;
-    let newComments = await postEvents.findByIdAndUpdate(
+    let newComments = await PostEvents.findByIdAndUpdate(
       postEventsId,
       {
         $push: {
@@ -96,7 +97,7 @@ exports.savepostEvents = async (req, res) => {
 
 exports.deletePostEvents = async (req, res) => {
   try {
-    await postEvents.findByIdAndRemove(req.params.id);
+    await PostEvents.findByIdAndRemove(req.params.id);
     res.json({ status: "ok" });
   } catch (error) {
     return res.status(500).json({ message: error.message });

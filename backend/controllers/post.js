@@ -31,12 +31,11 @@ exports.getAllPosts = async (req, res) => {
     followingPosts.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
-    
+
     res.json(followingPosts);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
-  
 };
 
 exports.comment = async (req, res) => {

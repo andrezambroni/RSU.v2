@@ -1,13 +1,31 @@
 function Dots({ color }) {
-    return (
-        <svg width="20" height="20" fill={color} viewBox="0 0 20 20">
-            <path
-                fillRule="evenodd"
-                d="M458 360a2 2 0 11-4 0 2 2 0 014 0m6 0a2 2 0 11-4 0 2 2 0 014 0m-12 0a2 2 0 11-4 0 2 2 0 014 0"
-                transform="translate(-446 -350)"
-            ></path>
-        </svg>
-    );
+  return (
+    <svg
+      width="25px"
+      height="25px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke="#000000"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M4 12.6111L8.92308 17.5L20 6.5"
+          stroke="#5D29A1"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>{" "}
+      </g>
+    </svg>
+  );
 }
 
 export default Dots;

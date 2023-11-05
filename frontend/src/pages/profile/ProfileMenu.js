@@ -14,10 +14,10 @@ export default function ProfileMenu() {
         <Link to="./friends" className="hover1">
           Amigos
         </Link>
-        <Link to="/" className="hover1">
+        <Link to="/src/pages/MyGroups" className="hover1">
           Meus Grupos
         </Link>
-        <Link to="/" className="hover1">
+        <Link to="/src/pages/MyEvents/index.js" className="hover1">
           Meus Eventos
         </Link>
         {/* <Link to="/" className="hover1">
