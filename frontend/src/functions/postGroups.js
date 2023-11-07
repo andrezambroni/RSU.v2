@@ -7,18 +7,11 @@ export const createPostGroups = async (
   user,
   token,
   category
-  
 ) => {
-  console.log(type,
-    background,
-    text,
-    images,
-    user,
-    category,
-    token)
+  console.log(type, background, text, images, user, category, token);
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/createPostsGroups`, 
+      `${process.env.REACT_APP_BACKEND_URL}/createPostsGroups`,
       {
         type,
         background,
@@ -123,6 +116,24 @@ export const deletePost = async (postId, token) => {
       }
     );
     return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const getAllGroups = async (token) => {
+  console.log('passando pelo function')
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getAllGroups`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log('o que ta acontecendo',data)
+    return data ;
   } catch (error) {
     return error.response.data.message;
   }

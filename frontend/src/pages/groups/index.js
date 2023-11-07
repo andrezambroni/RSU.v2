@@ -1,7 +1,4 @@
-import "./style.css";
-import GroupsActive from "../../svg/groupsActive";
-
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
 import CreateGroupPost from "../../components/createPostGroups";
@@ -10,23 +7,49 @@ import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
 import SendVerification from "../../components/home/sendVerification";
 import GroupPost from "../../components/groupPost";
-import "./style.css";
+import GroupList from "../../components/groupList";
+import axios from "axios";
+
 export default function Groups({ setVisible, posts, loading, getAllPosts }) {
-  console.log(posts, 'posts de grupo front')
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
   const [height, setHeight] = useState();
+  const [groupsData, setGroupsData] = useState([{_id:'qualquercoisa',name:'qualquercoisa', description:'qualquercoisa'}]);
+  const fetchGroups = async () => {
+    console.log('entrando no fetch')
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getAllGroups`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      setGroupsData(data);
+    } catch (error) {
+      console.log('error fetch', error)
+      console.error(error.response.data.message);
+    }
+  };
+  useEffect(() => {
+    fetchGroups(); // Chama a função para buscar os grupos
+  }, []);
+
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, [loading, height]);
+  }, [loading,height]);
+
   return (
     <div className="home" style={{ height: `${height + 150}px` }}>
       <Header page="Groups" getAllPosts={getAllPosts} />
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
-        {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
         <CreateGroupPost user={user} setVisible={setVisible} />
+        <GroupList data={groupsData} />{" "}
+        {/* Passa os dados dos grupos para o componente GroupList */}
+        
         {loading ? (
           <div className="sekelton_loader">
             <HashLoader color="#1876f2" />

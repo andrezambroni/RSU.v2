@@ -11,8 +11,10 @@ exports.createGroup = async (req, res) => {
 };
 
 exports.getAllGroups = async (req, res) => {
+  console.log('passando por aqui')
   try {
     const groups = await Group.find();
+    console.log('retornando', groups)
     res.json(groups);
   } catch (error) {
     return res.status(500).json({ message: error.message });
