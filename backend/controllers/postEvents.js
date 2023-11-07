@@ -2,7 +2,7 @@ const PostEvents = require("../models/postEvents");
 const User = require("../models/User");
 
 exports.createPostEvents = async (req, res) => {
-  console.log('cheguei')
+  
   try {
     const postEvents = await new PostEvents(req.body).save();
     await postEvents.populate("user", "first_name last_name cover picture username");

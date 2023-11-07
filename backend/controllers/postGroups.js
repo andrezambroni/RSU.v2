@@ -3,7 +3,6 @@ const User = require("../models/User");
 
 exports.createGroupsPost = async (req, res) => {
   
-  console.log(req.body,'req.body');
   try {
     const post = await new Post(req.body).save();
     await post.populate("user", "first_name last_name cover picture username");
@@ -14,12 +13,11 @@ exports.createGroupsPost = async (req, res) => {
 };
 exports.getAllGroupsPosts = async (req, res) => {
   const category = req?.body?.category;
-  console.log(category,'category');
-  console.log(req.body,'req.body');
+  
   try {
     const followingTemp = await User.findById(req.user.id).select("following");
     const following = followingTemp.following;
-    console.log('parte 1')
+    
     const promises = following.map((user) => {
       return Post.find({ user: user, category:category })
         .populate("user", "first_name last_name picture username cover")
@@ -38,7 +36,7 @@ exports.getAllGroupsPosts = async (req, res) => {
     followingPosts.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
-    console.log(followingPosts, 'Posts de grupo')
+    
     res.json(followingPosts);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -96,6 +94,15 @@ exports.savePost = async (req, res) => {
         },
       });
     }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getGroupPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({group: req.params.id});
+    res.json(posts);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

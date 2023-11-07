@@ -23,6 +23,11 @@ const postGroupsSchema = new mongoose.Schema(
     background: {
       type: String,
     },
+    group: {
+      type: ObjectId,
+      ref: "Groups",
+      required: true,
+    },
     comments: [
       {
         comment: {
