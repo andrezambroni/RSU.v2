@@ -14,7 +14,7 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
   const [height, setHeight] = useState();
-  const [groupsData, setGroupsData] = useState([{_id:'qualquercoisa',name:'qualquercoisa', description:'qualquercoisa'}]);
+  const [groupsData, setGroupsData] = useState([]);
   const fetchGroups = async () => {
     console.log('entrando no fetch')
     try {
@@ -46,9 +46,10 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         {user.verified === false && <SendVerification user={user} />}
-        <CreateGroupPost user={user} setVisible={setVisible} />
-        <GroupList data={groupsData} />{" "}
+         <GroupList data={groupsData} />{" "}
         {/* Passa os dados dos grupos para o componente GroupList */}
+        <CreateGroupPost user={user} setVisible={setVisible} />
+       
         
         {loading ? (
           <div className="sekelton_loader">

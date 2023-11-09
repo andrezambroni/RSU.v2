@@ -119,3 +119,35 @@ export const deletePost = async (postId, token) => {
     return error.response.data.message;
   }
 };
+
+export const createEvent = async (
+  type,
+  background,
+  text,
+  images,
+  user,
+  token,
+  category
+) => {
+  try {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/createEvent`,
+      {
+        type,
+        background,
+        text,
+        images,
+        user,
+        category,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return { status: "ok", data };
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

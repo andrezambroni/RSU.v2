@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
+
 export default function CreatePostEventPopup({
   user,
   setVisible,
@@ -18,7 +19,6 @@ export default function CreatePostEventPopup({
   dispatch,
   profile,
 }) {
-  
   const popup = useRef(null);
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
@@ -26,10 +26,19 @@ export default function CreatePostEventPopup({
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
   const [background, setBackground] = useState("");
-  const [category, setCategory] = useState("");
+  const [eventDetails, setEventDetails] = useState({
+    title: "",
+    date: "",
+    location: "",
+    description: "", 
+    category: "", // Adicione o campo 'category'
+    // Adicione outros campos conforme necessário
+  });
+
   useClickOutside(popup, () => {
     setVisible(false);
   });
+
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
@@ -40,7 +49,8 @@ export default function CreatePostEventPopup({
         null,
         user.id,
         user.token, 
-        category
+        eventDetails.category, // Use o campo 'category' de eventDetails
+        eventDetails.description
       );
       console.log(response);
       setLoading(false);
@@ -51,7 +61,13 @@ export default function CreatePostEventPopup({
         });
         setBackground("");
         setText("");
-        setCategory("");
+        setEventDetails({
+          title: "",
+          date: "",
+          location: "",
+          description: "", 
+          category: "", // Limpar a categoria após o envio
+        });
         setVisible(false);
       } else {
         setError(response);
@@ -76,7 +92,8 @@ export default function CreatePostEventPopup({
         response,
         user.id,
         user.token,
-        category
+        eventDetails.category,
+        eventDetails.description
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -87,7 +104,13 @@ export default function CreatePostEventPopup({
         setText("");
         setImages("");
         setVisible(false);
-        setCategory("");
+        setEventDetails({
+          title: "",
+          date: "",
+          location: "",
+          description: "", 
+          category: "", // Limpar a categoria após o envio
+        });
       } else {
         setError(res);
       }
@@ -100,7 +123,8 @@ export default function CreatePostEventPopup({
         null,
         user.id,
         user.token,
-        category
+        eventDetails.category,
+        eventDetails.description
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -111,6 +135,13 @@ export default function CreatePostEventPopup({
         setBackground("");
         setText("");
         setVisible(false);
+        setEventDetails({
+          title: "",
+          date: "",
+          location: "",
+          description: "", 
+          category: "", // Limpar a categoria após o envio
+        });
       } else {
         setError(response);
       }
@@ -118,6 +149,7 @@ export default function CreatePostEventPopup({
       console.log("nothing");
     }
   };
+
   return (
     <div className="blur">
       <div className="postBox" ref={popup}>
@@ -140,7 +172,7 @@ export default function CreatePostEventPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
-              <select classname="category">
+              <select className="category">
                 <option>--Selecionar--</option>
                 <option id="palestra">Palestra</option>
                 <option id="festa">Festa</option>
@@ -176,6 +208,56 @@ export default function CreatePostEventPopup({
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} />
+
+        {/* Campos de entrada para os detalhes do evento */}
+        <input
+          type="text"
+          placeholder="Título do Evento"
+          value={eventDetails.title}
+          onChange={(e) => setEventDetails({ ...eventDetails, title: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Data do Evento"
+          value={eventDetails.date}
+          onChange={(e) => setEventDetails({ ...eventDetails, date: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Local do Evento"
+          value={eventDetails.location}
+          onChange={(e) => setEventDetails({ ...eventDetails, location: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Descrição do Evento"
+          value={eventDetails.description}
+          onChange={(e) => setEventDetails({ ...eventDetails, description: e.target.value })}
+        />
+
+        {/* Novo campo para a categoria do evento */}
+        <select
+          className="category"
+          value={eventDetails.category}
+          onChange={(e) => setEventDetails({ ...eventDetails, category: e.target.value })}
+        >
+          <option>--Selecionar--</option>
+          <option id="palestra">Palestra</option>
+          <option id="festa">Festa</option>
+          <option id="evento_universitario">Evento Universitário</option>
+          <option id="outro">Outro</option>
+        </select>
+
+        {/* Novo botão para criar um evento */}
+        <button
+          className="create_event_button"
+          onClick={() => {
+            postSubmit();
+          }}
+        >
+          Criar Evento
+        </button>
+
         <button
           className="post_submit"
           onClick={() => {
@@ -183,7 +265,7 @@ export default function CreatePostEventPopup({
           }}
           disabled={loading}
         >
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Postar"}
         </button>
       </div>
     </div>

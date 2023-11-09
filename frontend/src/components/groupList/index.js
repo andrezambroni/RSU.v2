@@ -1,5 +1,5 @@
 import React from 'react';
-// import './GroupList.css'; // Importe seu arquivo de estilos
+ import './style.css'; 
 
 const GroupList = ({ data }) => {
   return (
