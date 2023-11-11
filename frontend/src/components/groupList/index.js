@@ -1,7 +1,7 @@
 import React from 'react';
- import './style.css'; 
+import './style.css';
 
-const GroupList = ({ data }) => {
+const GroupList = ({ data, joinGroup }) => {
   return (
     <div className="group-list">
       <h2>Todos os Grupos</h2>
@@ -12,7 +12,9 @@ const GroupList = ({ data }) => {
               <h3 className="group-name">{group.name}</h3>
               <p className="group-description">{group.description}</p>
             </div>
-            <button className="join-button">Participar</button>
+            <button className="join-button" onClick={() => joinGroup(group._id)}>
+              Participar
+            </button>
           </li>
         ))}
       </ul>

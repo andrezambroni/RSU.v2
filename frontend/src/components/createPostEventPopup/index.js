@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./style.css";
-import Picker from "emoji-picker-react";
 import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
@@ -24,15 +23,15 @@ export default function CreatePostEventPopup({
   const [showPrev, setShowPrev] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState("");
   const [background, setBackground] = useState("");
   const [eventDetails, setEventDetails] = useState({
     title: "",
     date: "",
     location: "",
-    description: "", 
-    category: "", // Adicione o campo 'category'
-    // Adicione outros campos conforme necessário
+    description: "",
+    category: "",
+    name: "", // Adicione o campo 'name'
   });
 
   useClickOutside(popup, () => {
@@ -48,11 +47,11 @@ export default function CreatePostEventPopup({
         text,
         null,
         user.id,
-        user.token, 
-        eventDetails.category, // Use o campo 'category' de eventDetails
-        eventDetails.description
+        user.token,
+        eventDetails.category,
+        eventDetails.description,
+        eventDetails.name
       );
-      console.log(response);
       setLoading(false);
       if (response.status === "ok") {
         dispatch({
@@ -65,8 +64,9 @@ export default function CreatePostEventPopup({
           title: "",
           date: "",
           location: "",
-          description: "", 
-          category: "", // Limpar a categoria após o envio
+          description: "",
+          category: "",
+          name: "",
         });
         setVisible(false);
       } else {
@@ -93,7 +93,8 @@ export default function CreatePostEventPopup({
         user.id,
         user.token,
         eventDetails.category,
-        eventDetails.description
+        eventDetails.description,
+        eventDetails.name
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -108,8 +109,9 @@ export default function CreatePostEventPopup({
           title: "",
           date: "",
           location: "",
-          description: "", 
-          category: "", // Limpar a categoria após o envio
+          description: "",
+          category: "",
+          name: "",
         });
       } else {
         setError(res);
@@ -124,7 +126,8 @@ export default function CreatePostEventPopup({
         user.id,
         user.token,
         eventDetails.category,
-        eventDetails.description
+        eventDetails.description,
+        eventDetails.name
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -139,8 +142,9 @@ export default function CreatePostEventPopup({
           title: "",
           date: "",
           location: "",
-          description: "", 
-          category: "", // Limpar a categoria após o envio
+          description: "",
+          category: "",
+          name: "",
         });
       } else {
         setError(response);
@@ -172,14 +176,63 @@ export default function CreatePostEventPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
-              <select className="category">
+              {/* <select
+                className="category"
+                value={eventDetails.category}
+                onChange={(e) =>
+                  setEventDetails({ ...eventDetails, category: e.target.value })
+                }
+              >
                 <option>--Selecionar--</option>
                 <option id="palestra">Palestra</option>
                 <option id="festa">Festa</option>
                 <option id="evento_universitario">Evento Universitário</option>
                 <option id="outro">Outro</option>
-                {/* {category = document.querySelector(".category")} */}
-              </select>
+              </select> */}
+
+              {/* Campos de entrada para os detalhes do evento */}
+        <input
+          type="text"
+          placeholder="Título do Evento"
+          value={eventDetails.title}
+          onChange={(e) =>
+            setEventDetails({ ...eventDetails, title: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Data do Evento"
+          value={eventDetails.date}
+          onChange={(e) =>
+            setEventDetails({ ...eventDetails, date: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Local do Evento"
+          value={eventDetails.location}
+          onChange={(e) =>
+            setEventDetails({ ...eventDetails, location: e.target.value })
+          }
+        />
+        
+
+        {/* Novo campo para a categoria do evento */}
+        <select
+          className="category"
+          value={eventDetails.category}
+          onChange={(e) =>
+            setEventDetails({ ...eventDetails, category: e.target.value })
+          }
+        >
+          <option>--Selecionar--</option>
+          <option id="palestra">Palestra</option>
+          <option id="festa">Festa</option>
+          <option id="evento_universitario">Evento Universitário</option>
+          <option id="outro">Outro</option>
+        </select>
+
+
             </div>
           </div>
         </div>
@@ -209,54 +262,12 @@ export default function CreatePostEventPopup({
         )}
         <AddToYourPost setShowPrev={setShowPrev} />
 
-        {/* Campos de entrada para os detalhes do evento */}
-        <input
-          type="text"
-          placeholder="Título do Evento"
-          value={eventDetails.title}
-          onChange={(e) => setEventDetails({ ...eventDetails, title: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Data do Evento"
-          value={eventDetails.date}
-          onChange={(e) => setEventDetails({ ...eventDetails, date: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Local do Evento"
-          value={eventDetails.location}
-          onChange={(e) => setEventDetails({ ...eventDetails, location: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Descrição do Evento"
-          value={eventDetails.description}
-          onChange={(e) => setEventDetails({ ...eventDetails, description: e.target.value })}
-        />
-
-        {/* Novo campo para a categoria do evento */}
-        <select
-          className="category"
-          value={eventDetails.category}
-          onChange={(e) => setEventDetails({ ...eventDetails, category: e.target.value })}
-        >
-          <option>--Selecionar--</option>
-          <option id="palestra">Palestra</option>
-          <option id="festa">Festa</option>
-          <option id="evento_universitario">Evento Universitário</option>
-          <option id="outro">Outro</option>
-        </select>
+        
+        {/* Novo campo para o nome do evento */}
+        
 
         {/* Novo botão para criar um evento */}
-        <button
-          className="create_event_button"
-          onClick={() => {
-            postSubmit();
-          }}
-        >
-          Criar Evento
-        </button>
+       
 
         <button
           className="post_submit"
@@ -265,7 +276,7 @@ export default function CreatePostEventPopup({
           }}
           disabled={loading}
         >
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Postar"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Criar Evento"}
         </button>
       </div>
     </div>

@@ -41,8 +41,23 @@ const postEventsSchema = new mongoose.Schema(
         },
       },
     ],
-    category:{
+    category: {
       type: String,
+    },
+    // Novos campos para os detalhes do evento
+    eventDetails: {
+      title: {
+        type: String,
+      },
+      date: {
+        type: String,
+      },
+      location: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
     },
   },
   {

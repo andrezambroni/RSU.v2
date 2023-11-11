@@ -58,7 +58,7 @@ export default function EmojiPickerBackgrounds({
           ref={textRef}
           maxLength="250"
           value={text}
-          placeholder={`Publique algo, ${user.first_name}`}
+          placeholder={`Descreva seu grupo, ${user.first_name}`}
           className={`post_input ${type2 ? "input2" : ""} ${
             sm && !background && "l0"
           }`}

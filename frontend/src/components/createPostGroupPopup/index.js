@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./style.css";
-import Picker from "emoji-picker-react";
 import EmojiPickerBackgrounds from "./EmojiPickerBackground";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
@@ -11,7 +10,7 @@ import { useDispatch } from "react-redux";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
-// import createPostGroups from "../createPostGroups";
+
 export default function CreatePostGroupPopup({
   user,
   setVisible,
@@ -24,16 +23,20 @@ export default function CreatePostGroupPopup({
   const [showPrev, setShowPrev] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState("");
   const [background, setBackground] = useState("");
   const [category, setCategory] = useState("");
+  const [groupName, setGroupName] = useState("");
+  const [groupDescription, setGroupDescription] = useState("");
+
   useClickOutside(popup, () => {
     setVisible(false);
   });
+
   const handleChange = (e) => {
     setCategory(e.target.value);
   };
-  console.log('category', category)
+
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
@@ -44,8 +47,9 @@ export default function CreatePostGroupPopup({
         null,
         user.id,
         user.token,
-        category
-        
+        category,
+        groupName,
+        groupDescription
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -55,6 +59,8 @@ export default function CreatePostGroupPopup({
         });
         setBackground("");
         setText("");
+        setGroupName("");
+        setGroupDescription("");
         setVisible(false);
       } else {
         setError(response);
@@ -79,7 +85,9 @@ export default function CreatePostGroupPopup({
         response,
         user.id,
         user.token,
-        category
+        category,
+        groupName,
+        groupDescription
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -89,6 +97,8 @@ export default function CreatePostGroupPopup({
         });
         setText("");
         setImages("");
+        setGroupName("");
+        setGroupDescription("");
         setVisible(false);
       } else {
         setError(res);
@@ -102,7 +112,9 @@ export default function CreatePostGroupPopup({
         null,
         user.id,
         user.token,
-        category
+        category,
+        groupName,
+        groupDescription
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -112,6 +124,8 @@ export default function CreatePostGroupPopup({
         });
         setBackground("");
         setText("");
+        setGroupName("");
+        setGroupDescription("");
         setVisible(false);
       } else {
         setError(response);
@@ -120,6 +134,7 @@ export default function CreatePostGroupPopup({
       console.log("nothing");
     }
   };
+
   return (
     <div className="blur">
       <div className="postBox" ref={popup}>
@@ -142,16 +157,28 @@ export default function CreatePostGroupPopup({
               {user.first_name} {user.last_name}
             </div>
             <div className="box_privacy">
-              <select id="category" value={category} onChange={handleChange}>
+              <input
+                type="text"
+                placeholder="Nome do Grupo"
+                value={groupName}
+                onChange={(e) => setGroupName(e.target.value)}
+              />
+              
+              <select
+                className="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option>--Selecionar--</option>
                 <option id="palestra">Palestra</option>
                 <option id="festa">Festa</option>
                 <option id="evento_universitario">Evento Universitário</option>
                 <option id="outro">Outro</option>
               </select>
 
-              <img src="../../../icons/public.png" alt="" />
+              {/* <img src="../../../icons/public.png" alt="" />
               <span>Public</span>
-              <i className="arrowDown_icon"></i>
+              <i className="arrowDown_icon"></i> */}
             </div>
           </div>
         </div>
@@ -187,9 +214,10 @@ export default function CreatePostGroupPopup({
           }}
           disabled={loading}
         >
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Criar Evento"}
         </button>
       </div>
     </div>
   );
 }
+

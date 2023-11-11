@@ -23,17 +23,30 @@ exports.getAllGroups = async (req, res) => {
 
 exports.joinGroup = async (req, res) => {
   try {
-    await Group.findByIdAndUpdate(req.params.id, {
-      $push: {
-        members: {
-          user: req.user.id,
-        },
-      },
+    const { id: groupId } = req.params;
+    const { id: userId } = req.user;
+
+    // Verifica se o usuário já está no grupo
+    const group = await Group.findById(groupId);
+    if (group.members.includes(userId)) {
+      return res.status(400).json({ message: 'Usuário já faz parte do grupo.' });
+    }
+
+    // Adiciona o usuário ao grupo
+    await Group.findByIdAndUpdate(groupId, {
+      $push: { members: userId },
     });
-    const group = await Group.findById(req.params.id);
-    res.json(group);
+
+    // Adiciona o grupo ao usuário
+    await User.findByIdAndUpdate(userId, {
+      $push: { groups: groupId },
+    });
+
+    const updatedGroup = await Group.findById(groupId);
+    res.json(updatedGroup);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    console.error('Erro ao processar a participação no grupo:', error);
+    res.status(500).json({ message: 'Erro interno do servidor.' });
   }
 };
 
