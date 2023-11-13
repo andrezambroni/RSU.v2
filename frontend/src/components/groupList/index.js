@@ -1,7 +1,9 @@
 import React from 'react';
 import './style.css';
 
-const GroupList = ({ data, joinGroup }) => {
+import { joinGroup } from '../../functions/postGroups';
+
+const GroupList = ({ data, token }) => {
   return (
     <div className="group-list">
       <h2>Todos os Grupos</h2>
@@ -11,8 +13,9 @@ const GroupList = ({ data, joinGroup }) => {
             <div className="group-details">
               <h3 className="group-name">{group.name}</h3>
               <p className="group-description">{group.description}</p>
+              <p className="group-description">{group.category}</p>
             </div>
-            <button className="join-button" onClick={() => joinGroup(group._id)}>
+            <button className="join-button" onClick={() => joinGroup(group._id, token)}>
               Participar
             </button>
           </li>

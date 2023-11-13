@@ -33,9 +33,9 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
           </div>
         ) : (
           <div className="posts">
-            {posts.map((post, i) => (
+            {/* {posts.map((post, i) => (
               <GroupPost key={i} post={post} user={user} />
-            ))}
+            ))} */}
           </div>
         )}
       </div>

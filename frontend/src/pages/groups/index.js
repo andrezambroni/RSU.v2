@@ -45,10 +45,10 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
       <Header page="Groups" getAllPosts={getAllPosts} />
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
-        {user.verified === false && <SendVerification user={user} />}
-         <GroupList data={groupsData} />{" "}
         {/* Passa os dados dos grupos para o componente GroupList */}
         <CreateGroupPost user={user} setVisible={setVisible} />
+        {user.verified === false && <SendVerification user={user} />}
+         <GroupList data={groupsData} token={user.token}/>
        
         
         {loading ? (

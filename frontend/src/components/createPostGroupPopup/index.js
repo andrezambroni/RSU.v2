@@ -11,6 +11,8 @@ import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 
+import { createGroup } from "../../functions/postGroups";
+
 export default function CreatePostGroupPopup({
   user,
   setVisible,
@@ -176,6 +178,13 @@ export default function CreatePostGroupPopup({
                 <option id="outro">Outro</option>
               </select>
 
+              <input
+                type="text"
+                placeholder={`Descreva seu grupo, ${user.first_name}`}
+                value={groupDescription}
+                onChange={(e) => setGroupDescription(e.target.value)}
+              />
+
               {/* <img src="../../../icons/public.png" alt="" />
               <span>Public</span>
               <i className="arrowDown_icon"></i> */}
@@ -211,6 +220,7 @@ export default function CreatePostGroupPopup({
           className="post_submit"
           onClick={() => {
             postSubmit();
+            createGroup(user.token, groupName,groupDescription,category);
           }}
           disabled={loading}
         >

@@ -14,12 +14,20 @@ import CreatePostEventPopup from "./components/createPostEventPopup";
 
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
-import { postsReducer, postsEventsReducer,postsGroupsReducer } from "./functions/reducers";
+import {
+  postsReducer,
+  postsEventsReducer,
+  postsGroupsReducer,
+} from "./functions/reducers";
 
 import Friends from "./pages/friends";
 
 import Groups from "./pages/groups";
 import Events from "./pages/events";
+import { getAllGroups } from "./functions/postGroups";
+
+import MyGroups from "./pages/myGroups";
+import MyEvents from "./pages/myEvents";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -60,12 +68,13 @@ function App() {
   };
 
   // GROUPS
-  
-  const [{ loadingGroups, errorGroups, postsGroups }, dispatchGroups] = useReducer(postsGroupsReducer, {
-    loadingGroups: false,
-    postsGroups: [],
-    errorGroups: "",
-  });
+
+  const [{ loadingGroups, errorGroups, postsGroups }, dispatchGroups] =
+    useReducer(postsGroupsReducer, {
+      loadingGroups: false,
+      postsGroups: [],
+      errorGroups: "",
+    });
   useEffect(() => {
     getAllGroupsPosts();
   }, []);
@@ -82,28 +91,28 @@ function App() {
           },
         }
       );
-      console.log( data, 'data')
+      console.log(data, "data");
       dispatchGroups({
         type: "POSTS_GROUPS_SUCCESS",
         payload: data,
       });
     } catch (error) {
-      console.log( error, 'deu erro')
+      console.log(error, "deu erro");
       dispatchGroups({
         type: "POSTS_GROUPS_ERROR",
         payload: error.response.data.message,
       });
     }
-  }
+  };
 
-    //EVENTS
+  //EVENTS
 
-   
-  const [{ loadingEvents, errorEvents, postsEvents }, dispatchEvents] = useReducer(postsEventsReducer, {
-    loadingEvents: false,
-    postsEvents: [],
-    errorEvents: "",
-  });
+  const [{ loadingEvents, errorEvents, postsEvents }, dispatchEvents] =
+    useReducer(postsEventsReducer, {
+      loadingEvents: false,
+      postsEvents: [],
+      errorEvents: "",
+    });
   useEffect(() => {
     getAllEventsPosts();
   }, []);
@@ -130,8 +139,7 @@ function App() {
         payload: error.response.data.message,
       });
     }
-  }
-
+  };
 
   return (
     <div className={darkTheme && "dark"}>
@@ -161,9 +169,6 @@ function App() {
           dispatch={dispatchEvents}
         />
       )}
-
-
-        
 
       <Routes>
         <Route element={<LoggedInRoutes />}>
@@ -234,6 +239,23 @@ function App() {
             }
             exact
           />
+
+          <Route
+            path="/myGroups"
+            element={
+              <MyGroups setVisible={setVisible} getAllGroups={getAllGroups} />
+            }
+            exact
+          />
+
+<Route
+            path="/myEvents"
+            element={
+              <MyEvents setVisible={setVisible}  />
+            }
+            exact
+          />
+
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
         <Route element={<NotLoggedInRoutes />}>
@@ -246,4 +268,3 @@ function App() {
 }
 
 export default App;
-

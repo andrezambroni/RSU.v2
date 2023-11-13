@@ -45,10 +45,10 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
       <Header page="Events" getAllPosts={getAllPosts} />
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
-        {user.verified === false && <SendVerification user={user} />}
-         <EventList data={eventsData} />{" "}
         {/* Passa os dados dos grupos para o componente GroupList */}
         <CreatePostEvents user={user} setVisible={setVisible} />
+        {user.verified === false && <SendVerification user={user} />}
+         <EventList data={eventsData} />{" "}
        
         
         {loading ? (

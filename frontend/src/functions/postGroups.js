@@ -122,7 +122,6 @@ export const deletePost = async (postId, token) => {
 };
 
 export const getAllGroups = async (token) => {
-  console.log('passando pelo function')
   try {
     const { data } = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/getAllGroups`,
@@ -132,8 +131,49 @@ export const getAllGroups = async (token) => {
         },
       }
     );
-    console.log('o que ta acontecendo',data)
-    return data ;
+    console.log("o que ta acontecendo", data);
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const joinGroup = async (groupId, token) => {
+  console.log("token front", token);
+  try {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/joinGroup/${groupId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const createGroup = async (token, groupName,groupDescription,category) => {
+  console.log(groupName,groupDescription,category)
+  try {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/createGroup`,
+      {
+        name: groupName,
+        description: groupDescription,
+        category: category,
+       
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
   } catch (error) {
     return error.response.data.message;
   }
