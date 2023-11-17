@@ -9,6 +9,7 @@ import SendVerification from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
 import EventPost from "../../components/eventPost";
 import "./style.css";
+
 export default function Events({ setVisible, posts, loading, getAllPosts }) {
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
