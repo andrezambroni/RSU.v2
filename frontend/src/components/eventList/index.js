@@ -4,6 +4,7 @@ import React from 'react';
 import { joinEvent } from '../../functions/postEvents'
 
 const EventList = ({ data,token }) => {
+  console.log('data',data)
   return (
     <div className="event-list">
       <h2>Todos os Eventos</h2>

@@ -54,6 +54,8 @@ export default function Groups({ setVisible, posts, loading, getAllPosts }) {
         {user.verified === false && <SendVerification user={user} />}
         <GroupList data={groupsData} />
         <CreateGroupPost user={user} setVisible={setVisible} />
+        {/* <CreateGroupPost user={user} setVisible={setVisible} /> */}
+        
         {loading ? (
           <div className="sekelton_loader">
             <HashLoader color="#1876f2" />

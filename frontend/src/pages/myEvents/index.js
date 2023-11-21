@@ -23,6 +23,7 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
   const [eventsData, setEventsData] = useState([]);
 
   const fetchEvents = async () => {
+    console.log('passei aquiiii')
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/myEvents`,
@@ -32,6 +33,7 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
           },
         }
       );
+      console.log(data, 'data')
       setEventsData(data);
     } catch (error) {
       console.log("error fetch", error);
@@ -56,6 +58,7 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
         {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
         <EventList data={eventsData} />
+        {/* <CreatePostEvents user={user} setVisible={setVisible} /> */}
         <CreatePostEvents user={user} setVisible={setVisible} />
         {loading ? (
           <div className="sekelton_loader">
@@ -63,9 +66,9 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
           </div>
         ) : (
           <div className="posts">
-            {posts.map((post, i) => (
+            {/* {posts.map((post, i) => (
               <EventPost key={i} post={post} user={user} />
-            ))}
+            ))} */}
           </div>
         )}
       </div>
