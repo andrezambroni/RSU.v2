@@ -120,25 +120,57 @@ export const deletePost = async (postId, token) => {
   }
 };
 
+export const getAllEvents = async (token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getAllEvents`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const joinEvent = async (eventId, token) => {
+  try {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/joinEvent/${eventId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
 export const createEvent = async (
-  type,
-  background,
-  text,
-  images,
-  user,
+  eventName,
+  eventDescription,
+  eventDate,
+  eventLocation,
   token,
-  category
+  category,
 ) => {
   try {
     const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/createEvent`,
       {
-        type,
-        background,
-        text,
-        images,
-        user,
-        category,
+        name: eventName,
+        description: eventDescription,
+        data: eventDate,
+        local: eventLocation,
+        category: category,
       },
       {
         headers: {
@@ -146,7 +178,7 @@ export const createEvent = async (
         },
       }
     );
-    return { status: "ok", data };
+    return  data ;
   } catch (error) {
     return error.response.data.message;
   }

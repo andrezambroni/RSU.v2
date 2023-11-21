@@ -11,6 +11,8 @@ const EventList = ({ data }) => {
             <div className="event-details">
               <h3 className="event-name">{event.name}</h3>
               <p className="event-description">{event.description}</p>
+              <p className="event-data">{event.date}</p>
+              <p className="event-local">{event.local}</p>
             </div>
             <button className="join-button">Participar</button>
           </li>
