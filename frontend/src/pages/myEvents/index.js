@@ -9,20 +9,53 @@ import SendVerification from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
 import EventPost from "../../components/eventPost";
 import "./style.css";
+
+import axios from "axios";
+
+import EventList from "../../components/eventList";
+
 export default function Events({ setVisible, posts, loading, getAllPosts }) {
   const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
   const [height, setHeight] = useState();
+
+
+  const [eventsData, setEventsData] = useState([]);
+
+  const fetchEvents = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/myEvents`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      setEventsData(data);
+    } catch (error) {
+      console.log("error fetch", error);
+      console.error(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents(); // Chama a função para buscar os grupos
+  }, []);
+
+
+
   useEffect(() => {
     setHeight(middle.current.clientHeight);
   }, [loading, height]);
   return (
     <div className="home" style={{ height: `${height + 150}px` }}>
-      <Header page="home" getAllPosts={getAllPosts} />
+      <Header page="Events" getAllPosts={getAllPosts} />
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
+        <EventList data={eventsData} />
         <CreatePostEvents user={user} setVisible={setVisible} />
         {loading ? (
           <div className="sekelton_loader">

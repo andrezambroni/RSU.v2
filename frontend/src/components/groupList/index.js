@@ -1,7 +1,7 @@
-import React from 'react';
-import './style.css';
+import React from "react";
+import "./style.css";
 
-import { joinGroup } from '../../functions/postGroups';
+import { joinGroup } from "../../functions/postGroups";
 
 const GroupList = ({ data, token }) => {
   return (
@@ -15,9 +15,14 @@ const GroupList = ({ data, token }) => {
               <p className="group-description">{group.description}</p>
               <p className="group-description">{group.category}</p>
             </div>
-            <button className="join-button" onClick={() => joinGroup(group._id, token)}>
-              Participar
-            </button>
+            {token && (
+              <button
+                className="join-button"
+                onClick={() => joinGroup(group._id, token)}
+              >
+                Participar
+              </button>
+            )}
           </li>
         ))}
       </ul>
