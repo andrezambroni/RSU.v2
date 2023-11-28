@@ -166,6 +166,14 @@ export default function CreatePostGroupPopup({
                 onChange={(e) => setGroupName(e.target.value)}
               />
               
+
+              <input
+                type="text"
+                placeholder={`Descreva seu grupo, ${user.first_name}`}
+                value={groupDescription}
+                onChange={(e) => setGroupDescription(e.target.value)}
+              />
+              
               <select
                 className="category"
                 value={category}
@@ -177,13 +185,6 @@ export default function CreatePostGroupPopup({
                 <option id="evento_universitario">Evento Universitário</option>
                 <option id="outro">Outro</option>
               </select>
-
-              <input
-                type="text"
-                placeholder={`Descreva seu grupo, ${user.first_name}`}
-                value={groupDescription}
-                onChange={(e) => setGroupDescription(e.target.value)}
-              />
 
               {/* <img src="../../../icons/public.png" alt="" />
               <span>Public</span>

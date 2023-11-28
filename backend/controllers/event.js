@@ -61,12 +61,11 @@ exports.joinEvent = async (req, res) => {
 
 exports.getMyEvents = async (req, res) => {
   try {
-    const userId = req.user.id;
 
     const events = await Event.find({
       members: {
         $elemMatch: {
-          user: userId,
+          user: req.user.id,
         },
       },
     });

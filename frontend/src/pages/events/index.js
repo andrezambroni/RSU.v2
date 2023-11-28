@@ -48,7 +48,7 @@ export default function Events({ setVisible, posts, loading, getAllPosts }) {
         {/* Passa os dados dos grupos para o componente GroupList */}
         <CreatePostEvents user={user} setVisible={setVisible} />
         {user.verified === false && <SendVerification user={user} />}
-         <EventList data={eventsData} />{" "}
+         <EventList data={eventsData} token={user.token}/>{" "}
        
         
         {loading ? (

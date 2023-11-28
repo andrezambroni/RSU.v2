@@ -28,6 +28,7 @@ import { getAllGroups } from "./functions/postGroups";
 
 import MyGroups from "./pages/myGroups";
 import MyEvents from "./pages/myEvents";
+import { getAllEvents } from "./functions/postEvents";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -251,7 +252,7 @@ function App() {
 <Route
             path="/myEvents"
             element={
-              <MyEvents setVisible={setVisible}  />
+              <MyEvents setVisible={setVisible} getAllEvents={getAllEvents} />
             }
             exact
           />

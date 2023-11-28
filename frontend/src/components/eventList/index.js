@@ -1,7 +1,10 @@
 import React from 'react';
  import './style.css'; 
 
-const EventList = ({ data }) => {
+import { joinEvent } from '../../functions/postEvents'
+
+const EventList = ({ data,token }) => {
+  console.log('data',data)
   return (
     <div className="event-list">
       <h2>Todos os Eventos</h2>
@@ -11,8 +14,17 @@ const EventList = ({ data }) => {
             <div className="event-details">
               <h3 className="event-name">{event.name}</h3>
               <p className="event-description">{event.description}</p>
+              <p className="event-data">{event.date}</p>
+              <p className="event-local">{event.local}</p>
             </div>
-            <button className="join-button">Participar</button>
+            {token && (
+              <button
+                className="join-button"
+                onClick={() => joinEvent(event._id, token)}
+              >
+                Participar
+              </button>
+            )}
           </li>
         ))}
       </ul>

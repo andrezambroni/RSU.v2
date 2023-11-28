@@ -131,7 +131,7 @@ export const getAllGroups = async (token) => {
         },
       }
     );
-    console.log("o que ta acontecendo", data);
+
     return data;
   } catch (error) {
     return error.response.data.message;
@@ -156,8 +156,12 @@ export const joinGroup = async (groupId, token) => {
   }
 };
 
-export const createGroup = async (token, groupName,groupDescription,category) => {
-  console.log(groupName,groupDescription,category)
+export const createGroup = async (
+  token,
+  groupName,
+  groupDescription,
+  category
+) => {
   try {
     const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/createGroup`,
@@ -165,8 +169,26 @@ export const createGroup = async (token, groupName,groupDescription,category) =>
         name: groupName,
         description: groupDescription,
         category: category,
-       
       },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const getMyGroups = async (
+  token,
+) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/myGroups`,
+      
       {
         headers: {
           Authorization: `Bearer ${token}`,
