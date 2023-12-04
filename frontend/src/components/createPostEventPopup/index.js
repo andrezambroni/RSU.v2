@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
+import { createEvent } from "@testing-library/react";
 
 export default function CreatePostEventPopup({
   user,
@@ -206,12 +207,12 @@ export default function CreatePostEventPopup({
                 onChange={(e) => setEventLocation(e.target.value)}
               />
 
-              <input
+              {/* <input
                 type="text"
                 placeholder={`Descreva seu evento, ${user.first_name}`}
                 value={eventDescription}
                 onChange={(e) => setEventDescription(e.target.value)}
-              />
+              /> */}
 
               {/* Novo campo para a categoria do evento */}
               <select
@@ -259,7 +260,7 @@ export default function CreatePostEventPopup({
         <button
           className="post_submit"
           onClick={() => {
-            postSubmit();
+            createEvent(user.token, eventName, eventDescription, eventDate, eventLocation)
           }}
           disabled={loading}
         >

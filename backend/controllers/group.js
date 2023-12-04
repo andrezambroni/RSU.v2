@@ -11,10 +11,10 @@ exports.createGroup = async (req, res) => {
 };
 
 exports.getAllGroups = async (req, res) => {
-  console.log("passando por aqui");
+  
   try {
     const groups = await Group.find();
-    console.log("retornando", groups);
+    
     res.json(groups);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -22,7 +22,7 @@ exports.getAllGroups = async (req, res) => {
 };
 
 exports.joinGroup = async (req, res) => {
-  console.log('cheguei join group', req.params.id , req.user.id);
+  
   try {
     await Group.findByIdAndUpdate(req.params.id, {
       $push: {
@@ -34,7 +34,7 @@ exports.joinGroup = async (req, res) => {
     const group = await Group.findById(req.params.id);
     res.json(group);
   } catch (error) {
-    console.log('erro do join group', error)
+    
     return res.status(500).json({ message: error.message });
   }
 };

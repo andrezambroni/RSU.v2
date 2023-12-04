@@ -19,6 +19,7 @@ export const createPostGroups = async (
         images,
         user,
         category,
+        
       },
       {
         headers: {

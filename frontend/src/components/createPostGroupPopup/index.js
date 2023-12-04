@@ -136,7 +136,7 @@ export default function CreatePostGroupPopup({
       console.log("nothing");
     }
   };
-
+  console.log('erro do error', error);
   return (
     <div className="blur">
       <div className="postBox" ref={popup}>
@@ -167,12 +167,12 @@ export default function CreatePostGroupPopup({
               />
               
 
-              <input
+              {/* <input
                 type="text"
                 placeholder={`Descreva seu grupo, ${user.first_name}`}
                 value={groupDescription}
                 onChange={(e) => setGroupDescription(e.target.value)}
-              />
+              /> */}
               
               <select
                 className="category"
@@ -220,12 +220,13 @@ export default function CreatePostGroupPopup({
         <button
           className="post_submit"
           onClick={() => {
-            postSubmit();
+            // postSubmit();
             createGroup(user.token, groupName,groupDescription,category);
+            setVisible(false);
           }}
           disabled={loading}
         >
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Criar Evento"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Criar Grupo"}
         </button>
       </div>
     </div>

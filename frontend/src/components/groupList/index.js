@@ -11,7 +11,7 @@ const GroupList = ({ data, token }) => {
         {data.map((group) => (
           <li key={group._id} className="group-item">
             <div className="group-details">
-              <h3 className="group-name">{group.name}</h3>
+              <h3><a href="" className="group-name">{group.name}</a></h3>
               <p className="group-description">{group.description}</p>
               <p className="group-description">{group.category}</p>
             </div>

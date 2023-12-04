@@ -23,6 +23,13 @@ const postEventsSchema = new mongoose.Schema(
     background: {
       type: String,
     },
+
+    event: {
+      type: ObjectId,
+      ref: "Events",
+      required: true,
+    },
+
     comments: [
       {
         comment: {
@@ -45,20 +52,7 @@ const postEventsSchema = new mongoose.Schema(
       type: String,
     },
     // Novos campos para os detalhes do evento
-    eventDetails: {
-      title: {
-        type: String,
-      },
-      date: {
-        type: String,
-      },
-      location: {
-        type: String,
-      },
-      description: {
-        type: String,
-      },
-    },
+    
   },
   {
     timestamps: true,

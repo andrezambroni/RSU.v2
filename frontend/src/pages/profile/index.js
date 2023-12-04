@@ -82,7 +82,7 @@ export default function Profile({ getAllPosts }) {
           console.log("error", error);
         }
         
-        
+        console.log('antes do dispatch');
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
@@ -115,7 +115,7 @@ export default function Profile({ getAllPosts }) {
   const getScroll = () => {
     setScrollHeight(window.pageYOffset);
   };
-
+  console.log('erro do profile', error);
   return (
     <div className="profile">
       {visible && (
