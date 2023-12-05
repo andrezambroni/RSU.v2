@@ -14,11 +14,7 @@
   padding-top: 10px;
 }
 .login_1 {
-  /* width: 300px; */
-  
-  
-  
- 
+  margin-bottom: 20px;
 }
 .login_1 span {
   font-size: 30px;
@@ -118,6 +114,12 @@
   flex-direction: column;
   align-items: center;
 }
+.login_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .reg_line {
   padding: 7px 0;
   display: flex;
@@ -177,7 +179,7 @@
   color: var(--blue-color);
 }
 .reg_btn_wrapper {
-  width: 100%;
+  width: 385px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -286,12 +288,15 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin-bottom: 15vh;
+    margin-bottom: 40px;
     align-items: center;
   }
   .login_1 img {
+    max-height: 60%;
     width: 300px;
     margin-left: -1.7rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .login_1 span {
     font-size: 35px;

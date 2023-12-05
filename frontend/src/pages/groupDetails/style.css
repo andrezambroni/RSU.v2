@@ -12,7 +12,7 @@
   }
   @media (max-width: 1175px) {
     .stories,
-    .createPost,
+    .createPostGroups,
     .post,
     .send_verification {
       width: 84%;
@@ -58,14 +58,14 @@
       width: 20px;
     }
     .stories,
-    .createPost,
+    .createPostGroups,
     .post,
     .send_verification {
       width: 100%;
     }
   }
   @media (max-width: 960px) {
-    .createPost,
+    .createPostGroups,
     .post,
     .send_verification {
       width: 93%;
@@ -94,7 +94,7 @@
     .right_home {
       display: none;
     }
-    .createPost,
+    .createPostGroups,
     .post,
     .send_verification {
       width: 110%;
@@ -140,7 +140,7 @@
       margin-left: 0;
     }
     .stories,
-    .createPost,
+    .createPostGroups,
     .post,
     .send_verification {
       width: 100%;
@@ -166,12 +166,12 @@
     }
   }
   @media (max-width: 400px) {
-    .createPost,
+    .createPostGroups,
     .post {
       margin-top: 1rem;
     }
     .home_middle,
-    .createPost,
+    .createPostGroups,
     .post {
       width: 98%;
       margin: 1rem auto;
