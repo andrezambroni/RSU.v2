@@ -4,7 +4,7 @@ export const updateprofilePicture = async (url, token) => {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/updateProfilePicture`,
       {
-        url:"https://s2-autoesporte.glbimg.com/mYgwlPa7vtIiUk6kROUxJUi2yyo=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/a/4/Ik8J1fQYirf6wYRvRJ8Q/2020-03-20-novo-tracker-1.jpg"
+        url:""
       },
       {
         headers: {
