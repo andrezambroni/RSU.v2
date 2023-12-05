@@ -16,7 +16,7 @@ export default function GenderSelect({ handleRegisterChange, genderError }) {
       style={{ marginBottom: `${genderError && !view3 ? "70px" : "0"}` }}
     >
       <label htmlFor="male">
-        Male
+        Masculino
         <input
           type="radio"
           name="gender"
@@ -26,7 +26,7 @@ export default function GenderSelect({ handleRegisterChange, genderError }) {
         />
       </label>
       <label htmlFor="female">
-        Female
+        Feminino
         <input
           type="radio"
           name="gender"
@@ -36,7 +36,7 @@ export default function GenderSelect({ handleRegisterChange, genderError }) {
         />
       </label>
       <label htmlFor="custom">
-        Custom
+        Outro
         <input
           type="radio"
           name="gender"

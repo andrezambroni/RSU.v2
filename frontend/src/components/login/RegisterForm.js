@@ -108,8 +108,8 @@ export default function RegisterForm({ setVisible }) {
       <div className="register">
         <div className="register_header">
           <i className="exit_icon" onClick={() => setVisible(false)}></i>
-          <span>Sign Up</span>
-          <span>it's quick and easy</span>
+          <span>Cadastrar</span>
+          <span>É fácil e rápido</span>
         </div>
         <Formik
           enableReinitialize
@@ -154,13 +154,13 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="First name"
+                  placeholder="Primeiro nome"
                   name="first_name"
                   onChange={handleRegisterChange}
                 />
                 <RegisterInput
                   type="text"
-                  placeholder="Surname"
+                  placeholder="Sobrenome"
                   name="last_name"
                   onChange={handleRegisterChange}
                 />
@@ -168,7 +168,7 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="Mobile number or email address"
+                  placeholder="Email"
                   name="email"
                   onChange={handleRegisterChange}
                 />
@@ -176,14 +176,14 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="password"
-                  placeholder="New password"
+                  placeholder="Senha"
                   name="password"
                   onChange={handleRegisterChange}
                 />
               </div>
               <div className="reg_col">
                 <div className="reg_line_header">
-                  Date of birth <i className="info_icon"></i>
+                 Data de nascimento <i className="info_icon"></i>
                 </div>
                 <DateOfBirthSelect
                   bDay={bDay}
@@ -198,7 +198,7 @@ export default function RegisterForm({ setVisible }) {
               </div>
               <div className="reg_col">
                 <div className="reg_line_header">
-                  Gender <i className="info_icon"></i>
+                  Genero <i className="info_icon"></i>
                 </div>
 
                 <GenderSelect
@@ -207,13 +207,13 @@ export default function RegisterForm({ setVisible }) {
                 />
               </div>
               <div className="reg_infos">
-                By clicking Sign Up, you agree to our{" "}
+                {/* By clicking Sign Up, you agree to our{" "}
                 <span>Terms, Data Policy &nbsp;</span>
                 and <span>Cookie Policy.</span> You may receive SMS
-                notifications from us and can opt out at any time.
+                notifications from us and can opt out at any time. */}
               </div>
               <div className="reg_btn_wrapper">
-                <button className="blue_btn open_signup">Sign Up</button>
+                <button className="blue_btn open_signup">Cadastrar</button>
               </div>
               <DotLoader color="#1876f2" loading={loading} size={30} />
               {error && <div className="error_text">{error}</div>}
