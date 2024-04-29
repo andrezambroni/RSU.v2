@@ -1,5 +1,6 @@
 const Event = require("../models/Event");
 
+
 exports.createEvent = async (req, res) => {
   try {
     const { title, date, description, location, category } = req.body;
